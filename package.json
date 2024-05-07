@@ -1,0 +1,17 @@
+{
+	"name": "test-jest",
+	"version": "1.0.0",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"test": "node --experimental-vm-modules --no-warnings node_modules/jest/bin/jest.js",
+		"testWatch": "node --experimental-vm-modules --no-warnings node_modules/jest/bin/jest.js --watchAll"
+	},
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"devDependencies": {
+		"jest": "^29.7.0"
+	}
+}
+
