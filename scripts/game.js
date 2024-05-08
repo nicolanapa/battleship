@@ -47,7 +47,16 @@ class Gameboard {
 		}
 	}
 
-	receiveAttack() {}
+	receiveAttack(coordinate) {
+		if (this.board[coordinate] !== "nothing" && this.board[coordinate] !== 0) {
+			let temp = this.board[coordinate];
+			temp.hit();
+			this.board[coordinate] = 1;
+		} else if (this.board[coordinate] === 0) {
+			this.board[coordinate] = "nothing";
+		} else if (this.board[coordinate] === "nothing") {
+		}
+	}
 }
 
 class Player {
