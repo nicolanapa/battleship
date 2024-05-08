@@ -1,10 +1,20 @@
 class Ship {
-	constructor({ length, timesHit, sunk }) {
-		let ship = {
-			length: length,
-			timesHit: timesHit,
-			sunk: sunk,
-		};
+	constructor(length, timesHit, sunk) {
+		this.length = length;
+		this.timesHit = timesHit;
+		this.sunk = sunk;
+	}
+
+	hit() {
+		return (this.timesHit += 1);
+	}
+
+	isSunk() {
+		if (this.timesHit === this.length) {
+			return (this.sunk = true);
+		} else {
+			return (this.sunk = false);
+		}
 	}
 }
 
