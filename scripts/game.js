@@ -1,5 +1,11 @@
 class Ship {
-	constructor() {}
+	constructor({ length, timesHit, sunk }) {
+		let ship = {
+			length: length,
+			timesHit: timesHit,
+			sunk: sunk,
+		};
+	}
 }
 
 class Gameboard {
