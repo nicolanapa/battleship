@@ -14,12 +14,12 @@ test.only("Trying to destroy a Carrier and sunking it", () => {
 		temp.hit();
 	}
 
-	let Gameboards = new Gameboard();
+	let Board = new Gameboard();
 
-	Gameboards.placeShip(temp, [0, 1], [5, 1]);
-	//Gameboards.placeShip(temp, [1, 2], [1, 7]);
-	Gameboards.receiveAttack([2, 1]);
-
+	Board.placeShip(temp, [1, 1], [6, 1]);
+	//Board.placeShip(temp, [1, 2], [1, 7]);
+	Board.receiveAttack([2, 1]);
+    //Board.board[2, 1].hit();
 	expect(temp).toHaveProperty("sunk", true);
 });
 
