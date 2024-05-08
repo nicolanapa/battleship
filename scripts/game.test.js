@@ -2,13 +2,21 @@ import { Ship, Gameboard, Player } from "./game.js";
 
 // Destroying a ship
 
-test("Trying to destroy a Carrier", () => {
+test("Trying to destroy a Carrier and sunking it", () => {
 	let temp = new Ship(5, 0, false);
 
 	temp.hit();
 
 	//expect(temp.timesHit).toBe(1);
 	expect(temp).toHaveProperty("timesHit", 1);
+
+	for (let i = 1; i < 5; i++) {
+		temp.hit();
+	}
+
+	temp.isSunk();
+
+	expect(temp).toHaveProperty("sunk", true);
 });
 
 test("Trying to destroy a Battleship", () => {
