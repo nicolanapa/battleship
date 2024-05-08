@@ -2,7 +2,7 @@ import { Ship, Gameboard, Player } from "./game.js";
 
 // Destroying a ship
 
-test("Trying to destroy a Carrier and sunking it", () => {
+test.only("Trying to destroy a Carrier and sunking it", () => {
 	let temp = new Ship(5, 0, false);
 
 	temp.hit();
@@ -10,11 +10,14 @@ test("Trying to destroy a Carrier and sunking it", () => {
 	//expect(temp.timesHit).toBe(1);
 	expect(temp).toHaveProperty("timesHit", 1);
 
-	for (let i = 1; i < 5; i++) {
+	for (let i = 1; i < 4; i++) {
 		temp.hit();
 	}
 
-	temp.isSunk();
+	let Gameboards = new Gameboard();
+
+	Gameboards.placeShip(temp, [0, 1], [4, 1]);
+	Gameboards.receiveAttack([2][1], [2][2]);
 
 	expect(temp).toHaveProperty("sunk", true);
 });

@@ -19,7 +19,29 @@ class Ship {
 }
 
 class Gameboard {
-	constructor() {}
+	constructor() {
+		this.board = [
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		];
+	}
+    
+    placeShip(ship, coordinateStart, coordinateEnd) {
+        // Checking if it's Horizontal or Vertical
+        if (coordinateStart[1] === coordinateEnd[1]) {
+            
+        }
+    }
+
+    receiveAttack() {}
 }
 
 class Player {
