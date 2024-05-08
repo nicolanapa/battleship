@@ -33,15 +33,21 @@ class Gameboard {
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 		];
 	}
-    
-    placeShip(ship, coordinateStart, coordinateEnd) {
-        // Checking if it's Horizontal or Vertical
-        if (coordinateStart[1] === coordinateEnd[1]) {
-            
-        }
-    }
 
-    receiveAttack() {}
+	placeShip(ship, coordinateStart, coordinateEnd) {
+		// Checking if it's Horizontal or Vertical
+		if (coordinateStart[1] === coordinateEnd[1]) {
+			for (let i = coordinateStart[0]; i < coordinateEnd[0]; i++) {
+				this.board[i][coordinateStart[1]] = ship;
+			}
+		} else {
+			for (let i = coordinateStart[1]; i < coordinateEnd[1]; i++) {
+				this.board[coordinateStart[0]][i] = ship;
+			}
+		}
+	}
+
+	receiveAttack() {}
 }
 
 class Player {
