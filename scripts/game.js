@@ -38,29 +38,38 @@ class Gameboard {
 
 	placeShip(ship, coordinateStart, coordinateEnd) {
 		// Checking if it's Horizontal or Vertical and then placing the ship
+
 		if (coordinateStart[1] === coordinateEnd[1]) {
-			for (let i = coordinateStart[0]; i < coordinateEnd[0]; i++) {
+			// Vertical
+			for (let i = coordinateStart[0]; i <= coordinateEnd[0]; i++) {
 				this.board[i][coordinateStart[1]] = ship;
 			}
 		} else {
-			for (let i = coordinateStart[1]; i < coordinateEnd[1]; i++) {
+			// Horizontal
+			for (let i = coordinateStart[1]; i <= coordinateEnd[1]; i++) {
 				this.board[coordinateStart[0]][i] = ship;
 			}
 		}
 	}
 
 	receiveAttack(coordinate) {
+		// 1 -> Ship attacked
+		// "nothing" -> Attacked and empty
+		// 0 -> Not attacked and empty
+
 		if (this.board[coordinate[0]][coordinate[1]] !== "nothing" && this.board[coordinate[0]][coordinate[1]] !== 0) {
 			let temp = this.board[coordinate[0]][coordinate[1]];
 			temp.hit();
 			temp.isSunk();
 
 			// Checks if all ships have been sunk after one gets sunked
-			if (temp.sunk === true) {
-				this.areAllSunked();
-			}
+			if (temp.sunk) {
+				this.board[coordinate[0]][coordinate[1]] = 1;
 
-			this.board[coordinate[0]][coordinate[1]] = 1;
+				this.areAllSunked();
+			} else {
+				this.board[coordinate[0]][coordinate[1]] = 1;
+			}
 		} else if (this.board[coordinate[0]][coordinate[1]] === 0) {
 			this.board[coordinate[0]][coordinate[1]] = "nothing";
 		} else if (this.board[coordinate[0]][coordinate[1]] === "nothing") {
@@ -68,16 +77,17 @@ class Gameboard {
 	}
 
 	areAllSunked() {
-		// All ships can be considered sunked until proved
-		this.allSunked = true;
+		this.allSunked = false;
 
 		for (let i = 0; i < 10; i++) {
 			for (let i2 = 0; i2 < 10; i2++) {
-				if (this.board[i][i2] !== "nothing" && this.board[i][i2] !== 0) {
-					this.allSunked = false;
+				if (this.board[i][i2] === 1) {
+					this.allSunked = true;
 
 					i = 10;
 					i2 = 10;
+				} else if (this.board[i][i2] !== "nothing" && this.board[i][i2] !== 0) {
+					this.allSunked = false;
 				}
 			}
 		}
