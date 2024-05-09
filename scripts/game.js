@@ -48,13 +48,13 @@ class Gameboard {
 	}
 
 	receiveAttack(coordinate) {
-		if (this.board[coordinate] !== "nothing" && this.board[coordinate] !== 0) {
-			let temp = this.board[coordinate];
+		if (this.board[coordinate[0]][coordinate[1]] !== "nothing" && this.board[coordinate[0]][coordinate[1]] !== 0) {
+			let temp = this.board[coordinate[0]][coordinate[1]];
 			temp.hit();
-			this.board[coordinate] = 1;
-		} else if (this.board[coordinate] === 0) {
-			this.board[coordinate] = "nothing";
-		} else if (this.board[coordinate] === "nothing") {
+			this.board[coordinate[0]][coordinate[1]] = 1;
+		} else if (this.board[coordinate[0]][coordinate[1]] === 0) {
+			this.board[coordinate[0]][coordinate[1]] = "nothing";
+		} else if (this.board[coordinate[0]][coordinate[1]] === "nothing") {
 		}
 	}
 }
