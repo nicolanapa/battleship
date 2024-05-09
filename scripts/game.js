@@ -95,7 +95,13 @@ class Gameboard {
 }
 
 class Player {
-	constructor() {}
+	constructor() {
+		this.player;
+
+		this.Board = new Gameboard();
+
+		this.robot = false;
+	}
 }
 
 export { Ship, Gameboard, Player };
