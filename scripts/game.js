@@ -33,7 +33,7 @@ class Gameboard {
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 		];
 
-		this.AllSunked = false;
+		this.allSunked = false;
 	}
 
 	placeShip(ship, coordinateStart, coordinateEnd) {
@@ -69,12 +69,12 @@ class Gameboard {
 
 	areAllSunked() {
 		// All ships can be considered sunked until proved
-		this.Allsunked = true;
+		this.allSunked = true;
 
 		for (let i = 0; i < 10; i++) {
 			for (let i2 = 0; i2 < 10; i2++) {
 				if (this.board[i][i2] !== "nothing" && this.board[i][i2] !== 0) {
-					this.areAllSunked = false;
+					this.allSunked = false;
 
 					i = 10;
 					i2 = 10;
