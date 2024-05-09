@@ -19,7 +19,8 @@ test.only("Trying to destroy a Carrier and sunking it", () => {
 	Board.placeShip(temp, [1, 1], [6, 1]);
 	//Board.placeShip(temp, [1, 2], [1, 7]);
 	Board.receiveAttack([2, 1]);
-    //Board.board[2, 1].hit();
+	expect(temp).toHaveProperty("timesHit", 5);
+	//Board.board[2, 1].hit();
 	expect(temp).toHaveProperty("sunk", true);
 });
 
