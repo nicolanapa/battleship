@@ -40,6 +40,21 @@ describe("Carrier Test", () => {
 		expect(temp).toHaveProperty("sunk", true);
 		expect(board).toHaveProperty("allSunked", true);
 	});
+
+	test("Checking if all ships are sunked after 'new' Carrier gets sunked", () => {
+		let temp = new Ship(5, 0, false);
+
+		let board = new Gameboard();
+
+		// Horizontal
+		board.placeShip(new Ship(5, 0, false), [1, 2], [1, 6]);
+		board.receiveAttack([1, 2]);
+		board.receiveAttack([1, 3]);
+		board.receiveAttack([1, 4]);
+		board.receiveAttack([1, 5]);
+		board.receiveAttack([1, 6]);
+		expect(board).toHaveProperty("allSunked", true);
+	});
 });
 
 test("Trying to destroy a Battleship", () => {
