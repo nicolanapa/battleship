@@ -1,8 +1,8 @@
 import { Gameboard } from "./gameboard.js";
 
 class Player {
-	constructor(player, playerNumber, robot) {
-		this.player = player;
+	constructor(playerName, playerNumber, robot) {
+		this.playerName = playerName;
 
 		// "player-one" or "player-two" and it's used to select the right player div
 		this.playerNumber = playerNumber;
