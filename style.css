@@ -7,33 +7,38 @@
 }
 
 #title {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0 10px 0;
+	display: flex;
+	justify-content: center;
+	margin: 20px 0 10px 0;
 }
 
 .main-gameboard {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(430px, 1fr));
-    justify-items: center;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+	justify-items: center;
 }
 
 .gameboard {
-    display: grid;
-    grid-template-columns: repeat(10, 40px);
-    grid-template-rows: repeat(10, 40px);
-    background-color: rgb(153, 178, 224);
-    border: 3px solid rgb(93, 150, 255);
-    border-radius: 10px;
-    padding: 5px;
+	display: grid;
+	grid-template-columns: repeat(10, 40px);
+	grid-template-rows: repeat(10, 40px);
+	background-color: rgb(215, 228, 250);
+	border-radius: 10px;
+	padding: 5px;
 }
 
 .square {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    margin: 2.5px;
-    padding: 5px;
-    outline: 1px solid black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 18px;
+	color: rgb(67, 42, 23);
+	outline: 1px solid rgb(174, 174, 174);
+	margin: 2.5px;
+	padding: 5px;
+}
+
+.player-informations {
+	margin: 20px 0 10px 0;
+	padding-left: 10px;
 }
