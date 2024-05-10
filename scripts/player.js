@@ -1,10 +1,13 @@
+import { Gameboard } from "./gameboard.js";
+
 class Player {
-	constructor() {
+	constructor(/*player, */ robot) {
+		// Make the name changeable
 		this.player;
 
-		this.Board = new Gameboard();
+		this.board = new Gameboard();
 
-		this.robot = false;
+		this.robot = robot;
 	}
 }
 
