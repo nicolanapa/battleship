@@ -8,37 +8,37 @@ describe("Carrier Test", () => {
 	test("Trying to destroy a Carrier and sunking it using the Board", () => {
 		let temp = new Ship(5, 0, false);
 
-		let Board = new Gameboard();
+		let board = new Gameboard();
 
 		// Vertical
-		Board.placeShip(temp, [1, 1], [5, 1]);
-		Board.receiveAttack([2, 1]);
-		Board.receiveAttack([3, 1]);
-		Board.receiveAttack([4, 1]);
-		Board.receiveAttack([5, 1]);
-		Board.receiveAttack([1, 1]);
+		board.placeShip(temp, [1, 1], [5, 1]);
+		board.receiveAttack([2, 1]);
+		board.receiveAttack([3, 1]);
+		board.receiveAttack([4, 1]);
+		board.receiveAttack([5, 1]);
+		board.receiveAttack([1, 1]);
 
-		//Board.placeShip(temp, [1, 2], [1, 7]);
+		//board.placeShip(temp, [1, 2], [1, 7]);
 		expect(temp).toHaveProperty("timesHit", 5);
-		//Board.board[2, 1].hit();
+		//board.board[2, 1].hit();
 		expect(temp).toHaveProperty("sunk", true);
 	});
 
 	test("Checking if all ships are sunked after Carrier gets sunked", () => {
 		let temp = new Ship(5, 0, false);
 
-		let Board = new Gameboard();
+		let board = new Gameboard();
 
 		// Horizontal
-		Board.placeShip(temp, [1, 2], [1, 6]);
-		Board.receiveAttack([1, 2]);
-		Board.receiveAttack([1, 3]);
-		Board.receiveAttack([1, 4]);
-		Board.receiveAttack([1, 5]);
-		Board.receiveAttack([1, 6]);
+		board.placeShip(temp, [1, 2], [1, 6]);
+		board.receiveAttack([1, 2]);
+		board.receiveAttack([1, 3]);
+		board.receiveAttack([1, 4]);
+		board.receiveAttack([1, 5]);
+		board.receiveAttack([1, 6]);
 		expect(temp).toHaveProperty("timesHit", 5);
 		expect(temp).toHaveProperty("sunk", true);
-		expect(Board).toHaveProperty("allSunked", true);
+		expect(board).toHaveProperty("allSunked", true);
 	});
 });
 
