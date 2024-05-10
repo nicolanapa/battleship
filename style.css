@@ -13,7 +13,9 @@
 }
 
 .main-gameboard {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(305px, 1fr));
+    justify-items: center;
 }
 
 .gameboard {
