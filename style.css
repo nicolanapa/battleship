@@ -4,6 +4,11 @@
 	font-family: "Roboto", system-ui;
 	padding: 0;
 	margin: 0;
+	color: white;
+}
+
+body {
+	background-color: #070f2b;
 }
 
 #title {
@@ -22,9 +27,9 @@
 	display: grid;
 	grid-template-columns: repeat(10, 40px);
 	grid-template-rows: repeat(10, 40px);
-	background-color: rgb(215, 228, 250);
+	background-color: #1b1a55;
 	border-radius: 10px;
-	padding: 5px;
+	padding: 10px;
 }
 
 .square {
@@ -32,13 +37,21 @@
 	justify-content: center;
 	align-items: center;
 	font-size: 18px;
-	color: rgb(67, 42, 23);
-	outline: 1px solid rgb(174, 174, 174);
-	margin: 2.5px;
+	color: #b1b1b1;
+	outline: 1px solid #9290c3;
+	margin: 0.5px;
 	padding: 5px;
 }
 
 .player-informations {
-	margin: 20px 0 10px 0;
-	padding-left: 10px;
+	margin: 10px 0 10px 0;
+	padding: 20px 10px;
+	background-color: #1B1A55;
+	border-radius: 10px;
+	font-weight: 300;
+}
+
+.player-name {
+	font-size: 25px;
+	font-style: italic;
 }
