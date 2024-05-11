@@ -16,7 +16,7 @@ function boardPlacer(player) {
 				square.textContent = player.board.board[i][i2];
 
 				if (player.board.allSunked === true) {
-					playerWinStatus.textContent = "You Lost! All ships have been sunked";
+					playerWinStatus.textContent = "You Won! All ships have been sunked";
 				}
 			});
 		}
