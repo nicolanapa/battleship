@@ -25,19 +25,15 @@ function boardPlacer(player) {
 
 	for (let i = 0; i < 10; i++) {
 		for (let i2 = 0; i2 < 10; i2++) {
-			//if (player.board.board[i][i2] !== "nothing" && player.board.board[i][i2] !== 0) {
 			let square = document.createElement("div");
 			square.classList.add("square");
 			square.textContent = "0";
 			playerBoard.appendChild(square);
-			/*} else {
-                let square = document.createElement("div");
-                square.classList.add("square");
-                square.textContent = "0";
-                playerBoard.appendChild(square);
-            }*/
 
-			// event listener for click
+			square.addEventListener("click", () => {
+				player.board.receiveAttack([i, i2]);
+				square.textContent = player.board.board[i][i2];
+			});
 		}
 	}
 

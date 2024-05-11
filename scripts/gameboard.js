@@ -34,10 +34,10 @@ class Gameboard {
 
 	receiveAttack(coordinate) {
 		// 1 -> Ship attacked
-		// "nothing" -> Attacked and empty
+		// "" -> Attacked and empty
 		// 0 -> Not attacked and empty
-
-		if (this.board[coordinate[0]][coordinate[1]] !== "nothing" && this.board[coordinate[0]][coordinate[1]] !== 0) {
+		if (this.board[coordinate[0]][coordinate[1]] === 1) {
+		} else if (this.board[coordinate[0]][coordinate[1]] !== "" && this.board[coordinate[0]][coordinate[1]] !== 0) {
 			let temp = this.board[coordinate[0]][coordinate[1]];
 			temp.hit();
 			temp.isSunk();
@@ -51,8 +51,8 @@ class Gameboard {
 				this.board[coordinate[0]][coordinate[1]] = 1;
 			}
 		} else if (this.board[coordinate[0]][coordinate[1]] === 0) {
-			this.board[coordinate[0]][coordinate[1]] = "nothing";
-		} else if (this.board[coordinate[0]][coordinate[1]] === "nothing") {
+			this.board[coordinate[0]][coordinate[1]] = "";
+		} else if (this.board[coordinate[0]][coordinate[1]] === "") {
 		}
 	}
 
@@ -66,7 +66,7 @@ class Gameboard {
 
 					i = 10;
 					i2 = 10;
-				} else if (this.board[i][i2] !== "nothing" && this.board[i][i2] !== 0) {
+				} else if (this.board[i][i2] !== "" && this.board[i][i2] !== 0) {
 					this.allSunked = false;
 				}
 			}

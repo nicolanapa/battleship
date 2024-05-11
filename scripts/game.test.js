@@ -55,6 +55,20 @@ describe("Carrier Test", () => {
 		board.receiveAttack([1, 6]);
 		expect(board).toHaveProperty("allSunked", true);
 	});
+
+	test("Checking what happens when you hit a already hit ship", () => {
+		let temp = new Ship(5, 0, false);
+
+		let board = new Gameboard();
+
+		// Horizontal
+		board.placeShip(temp, [1, 2], [1, 6]);
+		board.receiveAttack([1, 2]);
+		board.receiveAttack([1, 3]);
+		expect(temp).toHaveProperty("timesHit", 2);
+		board.receiveAttack([1, 3]);
+		expect(temp).toHaveProperty("timesHit", 2);
+	});
 });
 
 test("Trying to destroy a Battleship", () => {
