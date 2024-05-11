@@ -14,12 +14,13 @@ body {
 #title {
 	display: flex;
 	justify-content: center;
-	margin: 20px 0 10px 0;
+	margin: 10px 0 20px 0;
+	font-weight: 200;
 }
 
 .main-gameboard {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(425px, 1fr));
 	justify-items: center;
 }
 
