@@ -25,4 +25,10 @@ function boardPlacer(player) {
 	playerName.textContent = String(player.playerName);
 }
 
+function turn(player) {
+    while (player.board.allSunked !== true) {
+        
+    }
+}
+
 export { boardPlacer };
