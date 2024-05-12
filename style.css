@@ -26,28 +26,42 @@ body {
 
 .gameboard {
 	display: grid;
-	grid-template-columns: repeat(10, 40px);
-	grid-template-rows: repeat(10, 40px);
+	grid-template-columns: repeat(10, 35px);
+	grid-template-rows: repeat(10, 35px);
 	background-color: #1b1a55;
 	border-radius: 10px;
-	padding: 10px;
+	padding: 12.5px;
 }
 
 .square {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 18px;
-	color: #b1b1b1;
+	font-size: calc(15px + 0.25vw);
+	color: #a9a8e1;
 	outline: 1px solid #9290c3;
 	margin: 0.5px;
 	padding: 5px;
 }
 
+@media only screen and (max-width: 450px) {
+	.gameboard {
+		grid-template-columns: repeat(10, 25px);
+		grid-template-rows: repeat(10, 25px);
+		padding: 10px;
+	}
+
+	.square {
+		font-size: calc(13px + 0.25vw);
+		margin: 0.5px;
+		padding: 5px;
+	}
+}
+
 .player-informations {
 	margin: 10px 0 10px 0;
 	padding: 20px 10px;
-	background-color: #1B1A55;
+	background-color: #1b1a55;
 	border-radius: 10px;
 	font-weight: 300;
 }
