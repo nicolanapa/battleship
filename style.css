@@ -75,3 +75,7 @@ body {
 	filter: blur(2px);
 	pointer-events: none;
 }
+
+.disabled {
+	pointer-events: none;
+}
