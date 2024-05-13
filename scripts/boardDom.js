@@ -24,10 +24,10 @@ function boardPlacer(player) {
 
 	playerName.textContent = String(player.playerName);
 
-	turn(player, playerBoard);
+	turn(player);
 }
 
-function turn(player, playerBoard) {
+function turn(player) {
 	let playerSquares = document.querySelectorAll("." + player.playerNumber + " .gameboard .square");
 	let playerOneBoard = document.querySelector(".main-gameboard .player-one .gameboard");
 	let playerTwoBoard = document.querySelector(".main-gameboard .player-two .gameboard");
