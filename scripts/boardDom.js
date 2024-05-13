@@ -12,13 +12,18 @@ function boardPlacer(player) {
 			playerBoard.appendChild(square);
 
 			square.addEventListener("click", () => {
+				let tempSquareStatus = player.board.board[i][i2];
+
 				player.board.receiveAttack([i, i2]);
 				square.textContent = player.board.board[i][i2];
 
-				turn(player, playerBoard);
+				// If the player doesn't click the same square
+				if (tempSquareStatus !== player.board.board[i][i2]) {
+					turn(player, playerBoard);
+				}
 
 				if (player.board.allSunked === true) {
-					playerWinStatus.textContent = "You Won! All ships have been sunked";
+					turnDisabler(player, playerWinStatus);
 				}
 			});
 		}
@@ -37,6 +42,23 @@ function turn(player, playerBoard) {
 	} else if (player.playerNumber === "player-two") {
 		playerOneBoard.classList.remove("blur");
 		playerBoard.classList.add("blur");
+	}
+}
+
+function turnDisabler(player, playerWinStatus) {
+	let playerOneBoard = document.querySelector(".main-gameboard .player-one .gameboard");
+	let playerTwoBoard = document.querySelector(".main-gameboard .player-two .gameboard");
+
+	playerOneBoard.classList.remove("blur");
+	playerTwoBoard.classList.remove("blur");
+	playerOneBoard.classList.add("disabled");
+	playerTwoBoard.classList.add("disabled");
+
+	playerWinStatus.textContent = "You Lose! All your ships have been sunked";
+	if (player.playerNumber === "player-one") {
+		document.querySelector(".player-two .player-informations .win-status").textContent = "You Win! All Enemy's ships have been sunked";
+	} else if (player.playerNumber === "player-two") {
+		document.querySelector(".player-one .player-informations .win-status").textContent = "You Win! All Enemy's ships have been sunked";
 	}
 }
 
