@@ -23,12 +23,26 @@ function boardPlacer(player) {
 	}
 
 	playerName.textContent = String(player.playerName);
+
+	turn(player, playerBoard);
 }
 
-function turn(player) {
-    while (player.board.allSunked !== true) {
-        
-    }
+function turn(player, playerBoard) {
+	let playerSquares = document.querySelectorAll("." + player.playerNumber + " .gameboard .square");
+	let playerOneBoard = document.querySelector(".main-gameboard .player-one .gameboard");
+	let playerTwoBoard = document.querySelector(".main-gameboard .player-two .gameboard");
+
+	for (let i = 0; i < playerSquares.length; i++) {
+		playerSquares[i].addEventListener("click", () => {
+			if (player.playerNumber === "player-one") {
+				playerOneBoard.classList.add("blur");
+				playerTwoBoard.classList.remove("blur");
+			} else if (player.playerNumber === "player-two") {
+				playerOneBoard.classList.remove("blur");
+				playerTwoBoard.classList.add("blur");
+			}
+		});
+	}
 }
 
 export { boardPlacer };

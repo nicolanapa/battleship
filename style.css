@@ -20,7 +20,7 @@ body {
 
 .main-gameboard {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(425px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(395px, 1fr));
 	justify-items: center;
 }
 
@@ -69,4 +69,8 @@ body {
 .player-name {
 	font-size: 25px;
 	font-style: italic;
+}
+
+.blur {
+	filter: blur(3px);
 }
