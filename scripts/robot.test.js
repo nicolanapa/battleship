@@ -14,6 +14,8 @@ test("Testing a random move", () => {
 
 	let move = randomMove();
 
-	expect(move).toBeGreaterThanOrEqual(0);
-	expect(move).toBeLessThanOrEqual(9);
+	expect(move[0]).toBeGreaterThanOrEqual(0);
+	expect(move[0]).toBeLessThanOrEqual(9);
+    expect(move[1]).toBeGreaterThanOrEqual(0);
+	expect(move[1]).toBeLessThanOrEqual(9);
 });
