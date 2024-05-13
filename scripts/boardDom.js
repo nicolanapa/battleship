@@ -15,6 +15,8 @@ function boardPlacer(player) {
 				player.board.receiveAttack([i, i2]);
 				square.textContent = player.board.board[i][i2];
 
+				turn(player, playerBoard);
+
 				if (player.board.allSunked === true) {
 					playerWinStatus.textContent = "You Won! All ships have been sunked";
 				}
@@ -23,25 +25,18 @@ function boardPlacer(player) {
 	}
 
 	playerName.textContent = String(player.playerName);
-
-	turn(player);
 }
 
-function turn(player) {
-	let playerSquares = document.querySelectorAll("." + player.playerNumber + " .gameboard .square");
+function turn(player, playerBoard) {
 	let playerOneBoard = document.querySelector(".main-gameboard .player-one .gameboard");
 	let playerTwoBoard = document.querySelector(".main-gameboard .player-two .gameboard");
 
-	for (let i = 0; i < playerSquares.length; i++) {
-		playerSquares[i].addEventListener("click", () => {
-			if (player.playerNumber === "player-one") {
-				playerOneBoard.classList.add("blur");
-				playerTwoBoard.classList.remove("blur");
-			} else if (player.playerNumber === "player-two") {
-				playerOneBoard.classList.remove("blur");
-				playerTwoBoard.classList.add("blur");
-			}
-		});
+	if (player.playerNumber === "player-one") {
+		playerBoard.classList.add("blur");
+		playerTwoBoard.classList.remove("blur");
+	} else if (player.playerNumber === "player-two") {
+		playerOneBoard.classList.remove("blur");
+		playerBoard.classList.add("blur");
 	}
 }
 
