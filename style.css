@@ -72,7 +72,7 @@ body {
 }
 
 .blur {
-	filter: blur(2px);
+	filter: blur(2.5px);
 	pointer-events: none;
 }
 

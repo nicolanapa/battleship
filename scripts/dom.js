@@ -4,7 +4,8 @@ import { Player } from "./player.js";
 import { boardPlacer } from "./boardDom.js";
 
 let playerOne = new Player("Aldo", "player-one", false);
-let playerTwo = new Player("Moro", "player-two", false);
+//let playerTwo = new Player("Moro", "player-two", false);
+let playerTwo = new Player("Moro", "player-two", true);
 
 playerOne.board.placeShip(new Ship(5, 0, false), [2, 3], [2, 7]);
 /*playerOne.board.placeShip(new Ship(3, 0, false), [3, 1], [5, 1]);
