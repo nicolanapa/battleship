@@ -32,6 +32,11 @@ function boardPlacer(player) {
 	}
 
 	playerName.textContent = String(player.playerName);
+
+	if (player.playerNumber === "player-two" && player.robot === true) {
+		document.querySelector("." + player.playerNumber + " .player-informations .robot").textContent = "ROBOT";
+		document.querySelector(".main-gameboard .player-one .gameboard").classList.add("disabled");
+	}
 }
 
 export { boardPlacer };
