@@ -1,3 +1,5 @@
+import { randomMove } from "./robot.js";
+
 function turn(player, playerBoard) {
 	let playerOneBoard = document.querySelector(".main-gameboard .player-one .gameboard");
 	let playerTwoBoard = document.querySelector(".main-gameboard .player-two .gameboard");
@@ -5,13 +7,13 @@ function turn(player, playerBoard) {
 	if (player.playerNumber === "player-one") {
 		playerBoard.classList.add("blur");
 		playerTwoBoard.classList.remove("blur");
-
-		/*if (document.querySelector(".main-gameboard .player-two .player-informations .robot").textContent.includes("ROBOT")) {
-			console.log(1);
-		}*/
 	} else if (player.playerNumber === "player-two") {
 		playerOneBoard.classList.remove("blur");
 		playerBoard.classList.add("blur");
+
+		if (document.querySelector(".main-gameboard .player-two .player-informations .robot").textContent.includes("ROBOT")) {
+			randomMove();
+		}
 	}
 }
 
