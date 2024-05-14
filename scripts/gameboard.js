@@ -71,8 +71,6 @@ class Gameboard {
 				}
 			}
 		}
-
-		console.log(this.board);
 	}
 }
 
