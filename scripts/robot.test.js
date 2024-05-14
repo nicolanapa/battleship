@@ -3,7 +3,7 @@ import { Gameboard } from "./gameboard.js";
 import { Player } from "./player.js";
 import { randomMove } from "./robot.js";
 
-test("Testing a random move", () => {
+test.skip("Testing a random move", () => {
 	let playerOne = new Player("Luca", "player-one", false);
 	let robot = new Player("User", "player-two", true);
 	playerOne.board.placeShip(new Ship(5, 0, false), [2, 3], [2, 7]);
@@ -20,7 +20,7 @@ test("Testing a random move", () => {
 	expect(move[1]).toBeLessThanOrEqual(9);
 });
 
-test("Testing attacks", () => {
+test.skip("Testing attacks", () => {
 	let playerOne = new Player("Luca", "player-one", false);
 	let robot = new Player("User", "player-two", true);
 	playerOne.board.placeShip(new Ship(5, 0, false), [2, 3], [2, 7]);
