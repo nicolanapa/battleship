@@ -44,6 +44,12 @@ body {
 	padding: 5px;
 }
 
+.robot {
+	margin-top: -5px;
+	padding-left: 5%;
+	font-weight: 500;
+}
+
 @media only screen and (max-width: 450px) {
 	.gameboard {
 		grid-template-columns: repeat(10, 25px);
@@ -55,6 +61,15 @@ body {
 		font-size: calc(13px + 0.25vw);
 		margin: 0.5px;
 		padding: 5px;
+	}
+
+	.win-status {
+		font-size: calc(13px + 0.25vw);
+	}
+
+	.robot {
+		font-size: calc(10px + 0.25vw);
+		margin-top: 0;
 	}
 }
 
@@ -73,7 +88,7 @@ body {
 
 .blur {
 	/* Use sone animations like fading*/
-	filter: blur(2.5px);
+	filter: blur(1.5px);
 	pointer-events: none;
 }
 
