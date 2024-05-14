@@ -27,7 +27,7 @@ function randomMove() {
 		}
 
 		return move;
-	}, 1000);
+	}, 650);
 }
 
 export { randomMove };
