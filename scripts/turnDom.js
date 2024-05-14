@@ -5,6 +5,10 @@ function turn(player, playerBoard) {
 	if (player.playerNumber === "player-one") {
 		playerBoard.classList.add("blur");
 		playerTwoBoard.classList.remove("blur");
+
+		/*if (document.querySelector(".main-gameboard .player-two .player-informations .robot").textContent.includes("ROBOT")) {
+			console.log(1);
+		}*/
 	} else if (player.playerNumber === "player-two") {
 		playerOneBoard.classList.remove("blur");
 		playerBoard.classList.add("blur");
