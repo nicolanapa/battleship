@@ -30,4 +30,6 @@ function randomMove() {
 	}, 650);
 }
 
+// Need to fix another move after player-one wins (robot still plays another round and blurs player-one board)
+
 export { randomMove };
