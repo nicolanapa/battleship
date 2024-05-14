@@ -63,14 +63,16 @@ class Gameboard {
 			for (let i2 = 0; i2 < 10; i2++) {
 				if (this.board[i][i2] === 1) {
 					this.allSunked = true;
+				} else if (this.board[i][i2] !== "" && this.board[i][i2] !== 0 && this.board[i][i2] !== 1) {
+					this.allSunked = false;
 
 					i = 10;
 					i2 = 10;
-				} else if (this.board[i][i2] !== "" && this.board[i][i2] !== 0) {
-					this.allSunked = false;
 				}
 			}
 		}
+
+		console.log(this.board);
 	}
 }
 
