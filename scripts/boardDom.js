@@ -23,10 +23,6 @@ function boardPlacer(player) {
 				// If the player doesn't click the same square
 				if (tempSquareStatus !== player.board.board[i][i2]) {
 					turn(player, playerBoard);
-				} else if (
-					document.querySelector(".main-gameboard .player-two .player-informations .robot").textContent.includes("ROBOT")
-				) {
-					randomMove();
 				}
 
 				if (player.board.allSunked === true) {
