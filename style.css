@@ -75,6 +75,16 @@ body {
 	font-weight: 300;
 }
 
+.left {
+	align-self: center;
+}
+
+.right > div,
+.small-right > div {
+	padding: 5px;
+	margin: 5px;
+}
+
 .player-name {
 	font-size: 25px;
 	font-style: italic;
