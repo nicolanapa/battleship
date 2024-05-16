@@ -50,6 +50,10 @@ body {
 	font-weight: 500;
 }
 
+.win-status {
+	margin-top: 2.5px;
+}
+
 .settings {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(395px, 1fr));
