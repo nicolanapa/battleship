@@ -65,6 +65,31 @@ body {
 	visibility: hidden;
 }
 
+.player-informations,
+.settings > div,
+.small-right {
+	margin: 10px 0 10px 0;
+	padding: 20px 10px;
+	background-color: #1b1a55;
+	border-radius: 10px;
+	font-weight: 300;
+}
+
+.player-name {
+	font-size: 25px;
+	font-style: italic;
+}
+
+.blur {
+	/* Use sone animations like fading*/
+	filter: blur(1.5px);
+	pointer-events: none;
+}
+
+.disabled {
+	pointer-events: none;
+}
+
 @media only screen and (max-width: 790px) {
 	.gameboard {
 		grid-template-columns: repeat(10, 25px);
@@ -95,30 +120,6 @@ body {
 	.small-right {
 		display: grid;
 		visibility: visible;
+		margin-top: 20px;
 	}
-}
-
-.player-informations,
-.settings > div,
-.small-right {
-	margin: 10px 0 10px 0;
-	padding: 20px 10px;
-	background-color: #1b1a55;
-	border-radius: 10px;
-	font-weight: 300;
-}
-
-.player-name {
-	font-size: 25px;
-	font-style: italic;
-}
-
-.blur {
-	/* Use sone animations like fading*/
-	filter: blur(1.5px);
-	pointer-events: none;
-}
-
-.disabled {
-	pointer-events: none;
 }
