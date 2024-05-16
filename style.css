@@ -50,7 +50,22 @@ body {
 	font-weight: 500;
 }
 
-@media only screen and (max-width: 450px) {
+.settings {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(395px, 1fr));
+	justify-items: center;
+}
+
+.right {
+	visibility: visible;
+}
+
+.small-right {
+	display: none;
+	visibility: hidden;
+}
+
+@media only screen and (max-width: 790px) {
 	.gameboard {
 		grid-template-columns: repeat(10, 25px);
 		grid-template-rows: repeat(10, 25px);
@@ -71,9 +86,21 @@ body {
 		font-size: calc(10px + 0.25vw);
 		margin-top: 0;
 	}
+
+	.right {
+		display: none;
+		visibility: hidden;
+	}
+
+	.small-right {
+		display: grid;
+		visibility: visible;
+	}
 }
 
-.player-informations {
+.player-informations,
+.settings > div,
+.small-right {
 	margin: 10px 0 10px 0;
 	padding: 20px 10px;
 	background-color: #1b1a55;
