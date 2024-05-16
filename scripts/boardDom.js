@@ -22,7 +22,7 @@ function boardPlacer(player) {
 
 				// If the player doesn't click the same square
 				if (tempSquareStatus !== player.board.board[i][i2]) {
-					turn(player, playerBoard);
+					turn(player, playerBoard, playerWinStatus);
 				}
 
 				if (player.board.allSunked === true) {

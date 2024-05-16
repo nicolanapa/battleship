@@ -1,6 +1,6 @@
 import { randomMove } from "./robot.js";
 
-function turn(player, playerBoard) {
+function turn(player, playerBoard, playerWinStatus) {
 	let playerOneBoard = document.querySelector(".main-gameboard .player-one .gameboard");
 	let playerTwoBoard = document.querySelector(".main-gameboard .player-two .gameboard");
 
@@ -11,7 +11,9 @@ function turn(player, playerBoard) {
 		playerOneBoard.classList.remove("blur");
 		playerBoard.classList.add("blur");
 
-		if (document.querySelector(".main-gameboard .player-two .player-informations .robot").textContent.includes("ROBOT")) {
+		if (player.board.allSunked === true) {
+			turnDisabler(player, playerWinStatus);
+		} else if (document.querySelector(".main-gameboard .player-two .player-informations .robot").textContent.includes("ROBOT")) {
 			randomMove();
 		}
 	}
