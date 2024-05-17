@@ -79,6 +79,10 @@ body {
 	font-weight: 300;
 }
 
+.left {
+	align-self: center;
+}
+
 .left > div,
 .right > div,
 .small-right > div {
