@@ -1,6 +1,52 @@
 import { turn, turnDisabler } from "./turnDom.js";
 import { randomMove } from "./robot.js";
 
+function placeAllShips(player) {
+	if (player.playerNumber === "player-two") {
+		if (player.playerNumber === "player-two" && player.robot === true) {
+			let rightSettings = document.querySelector(".settings .right");
+			let smallRightSettings = document.querySelector(".small-right");
+
+			let placeShipPlayerTwo = document.createElement("div");
+			placeShipPlayerTwo.textContent = "Place All Ships";
+
+			let placeShipPlayerTwo1 = document.createElement("div");
+			placeShipPlayerTwo1.textContent = "Place All Ships";
+
+			rightSettings.appendChild(placeShipPlayerTwo);
+			smallRightSettings.appendChild(placeShipPlayerTwo1);
+
+			placeShipPlayerTwo.addEventListener("click", () => {});
+
+			placeShipPlayerTwo1.addEventListener("click", () => {});
+		} else {
+			let rightSettings = document.querySelector(".settings .right");
+			let smallRightSettings = document.querySelector(".small-right");
+
+			let placeShipPlayerTwo = document.createElement("div");
+			placeShipPlayerTwo.textContent = "Place All Ships";
+
+			let placeShipPlayerTwo1 = document.createElement("div");
+			placeShipPlayerTwo1.textContent = "Place All Ships";
+
+			rightSettings.appendChild(placeShipPlayerTwo);
+			smallRightSettings.appendChild(placeShipPlayerTwo1);
+
+			placeShipPlayerTwo.addEventListener("click", () => {});
+
+			placeShipPlayerTwo1.addEventListener("click", () => {});
+		}
+	} else {
+		let leftSettings = document.querySelector(".settings .left");
+		let placeShipPlayerOne = document.createElement("div");
+		placeShipPlayerOne.textContent = "Place All Ships";
+
+		leftSettings.appendChild(placeShipPlayerOne);
+
+		placeShipPlayerOne.addEventListener("click", () => {});
+	}
+}
+
 function nameSelection(player, playerName) {
 	if (player.playerNumber === "player-two") {
 		let rightSettings = document.querySelector(".settings .right");
@@ -101,6 +147,7 @@ function boardPlacer(player) {
 		document.querySelector("." + player.playerNumber + " .player-informations .robot").textContent = "PLAYER";
 	}
 
+	placeAllShips(player);
 	nameSelection(player, playerName);
 }
 
