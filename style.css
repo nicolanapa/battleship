@@ -79,14 +79,13 @@ body {
 	font-weight: 300;
 }
 
-.left {
-	align-self: center;
-}
-
+.left > div,
 .right > div,
 .small-right > div {
-	padding: 6px 3px;
-	margin: 5px;
+	background-color: #111036;
+	border-radius: 15px;
+	padding: 15px 12.5px;
+	margin: 9px 3px;
 }
 
 .player-name {
