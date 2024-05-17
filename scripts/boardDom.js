@@ -2,23 +2,58 @@ import { turn, turnDisabler } from "./turnDom.js";
 import { randomMove } from "./robot.js";
 
 function nameSelection(player, playerName) {
-	let leftSettings = document.querySelector(".settings .left");
-	let namePlayerOne = document.createElement("div");
-	namePlayerOne.textContent = "Change Name";
-	namePlayerOne.classList.add("name-choosing");
+	if (player.playerNumber === "player-two") {
+		let rightSettings = document.querySelector(".settings .right");
+		let smallRightSettings = document.querySelector(".small-right");
 
-	leftSettings.appendChild(namePlayerOne);
+		let namePlayerTwo = document.createElement("div");
+		namePlayerTwo.textContent = "Change Name";
 
-	namePlayerOne.addEventListener("click", () => {
-		let newName = prompt("Change your name", "");
+		let namePlayerTwo1 = document.createElement("div");
+		namePlayerTwo1.textContent = "Change Name";
 
-		if (newName === "") {
-			newName = "User" + Math.floor(Math.random() * 10000);
-		}
+		rightSettings.appendChild(namePlayerTwo);
+		smallRightSettings.appendChild(namePlayerTwo1);
 
-		player.playerName = newName;
-		playerName.textContent = newName;
-	});
+		namePlayerTwo.addEventListener("click", () => {
+			let newName = prompt("Change your name", "");
+
+			if (newName === "") {
+				newName = "User" + Math.floor(Math.random() * 10000);
+			}
+
+			player.playerName = newName;
+			playerName.textContent = newName;
+		});
+
+		namePlayerTwo1.addEventListener("click", () => {
+			let newName = prompt("Change your name", "");
+
+			if (newName === "") {
+				newName = "User" + Math.floor(Math.random() * 10000);
+			}
+
+			player.playerName = newName;
+			playerName.textContent = newName;
+		});
+	} else {
+		let leftSettings = document.querySelector(".settings .left");
+		let namePlayerOne = document.createElement("div");
+		namePlayerOne.textContent = "Change Name";
+
+		leftSettings.appendChild(namePlayerOne);
+
+		namePlayerOne.addEventListener("click", () => {
+			let newName = prompt("Change your name", "");
+
+			if (newName === "") {
+				newName = "User" + Math.floor(Math.random() * 10000);
+			}
+
+			player.playerName = newName;
+			playerName.textContent = newName;
+		});
+	}
 }
 
 function boardPlacer(player) {
@@ -54,22 +89,19 @@ function boardPlacer(player) {
 
 	playerName.textContent = String(player.playerName);
 
-	// To make the choosing of the name possible
-	if (player.playerNumber === "player-one" && player.robot === false) {
-		nameSelection(player, playerName);
-	}
-
 	if (player.playerNumber === "player-two" && player.robot === true) {
 		document.querySelector("." + player.playerNumber + " .player-informations .robot").textContent = "ROBOT";
 		document.querySelector(".main-gameboard .player-one .gameboard").classList.add("disabled");
 		document.querySelector(".main-gameboard .player-one .gameboard").classList.add("disabled");
-		document.querySelectorAll(".placement-right")[0].classList.add("disabled");
-		document.querySelectorAll(".placement-right")[1].classList.add("disabled");
+		/*document.querySelectorAll(".placement-right")[0].classList.add("disabled");
+		document.querySelectorAll(".placement-right")[1].classList.add("disabled");*/
 
 		// Random placement function for ships
 	} else if (player.playerNumber === "player-two" && player.robot === false) {
 		document.querySelector("." + player.playerNumber + " .player-informations .robot").textContent = "PLAYER";
 	}
+
+	nameSelection(player, playerName);
 }
 
 export { boardPlacer };
