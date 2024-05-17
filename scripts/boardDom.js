@@ -42,4 +42,10 @@ function boardPlacer(player) {
 	}
 }
 
+function nameSelection() {
+	let playerInformations = document.querySelector(".main-gameboard .player-one .player-informations");
+	let namePlayerOne = document.createElement("button");
+	namePlayerOne.textContent = "Change Name";
+}
+
 export { boardPlacer };
