@@ -1,6 +1,16 @@
 import { turn, turnDisabler } from "./turnDom.js";
 import { randomMove } from "./robot.js";
 
+function nameSelection() {
+	let playerName = document.querySelector(".main-gameboard .player-one .player-informations .player-name");
+	let leftSettings = document.querySelector(".settings .left");
+	let namePlayerOne = document.createElement("div");
+	namePlayerOne.textContent = "Change Name";
+	namePlayerOne.classList.add("name-choosing");
+
+	leftSettings.appendChild(namePlayerOne);
+}
+
 function boardPlacer(player) {
 	let playerDiv = document.querySelector("." + player.playerNumber);
 	let playerBoard = document.querySelector("." + player.playerNumber + " .gameboard");
@@ -37,15 +47,14 @@ function boardPlacer(player) {
 	if (player.playerNumber === "player-two" && player.robot === true) {
 		document.querySelector("." + player.playerNumber + " .player-informations .robot").textContent = "ROBOT";
 		document.querySelector(".main-gameboard .player-one .gameboard").classList.add("disabled");
+		document.querySelector(".main-gameboard .player-one .gameboard").classList.add("disabled");
+		document.querySelectorAll(".placement-right")[0].classList.add("disabled");
+		document.querySelectorAll(".placement-right")[1].classList.add("disabled");
+		nameSelection();
+		// Random placement function for ships
 	} else if (player.playerNumber === "player-two" && player.robot === false) {
 		document.querySelector("." + player.playerNumber + " .player-informations .robot").textContent = "PLAYER";
 	}
-}
-
-function nameSelection() {
-	let playerInformations = document.querySelector(".main-gameboard .player-one .player-informations");
-	let namePlayerOne = document.createElement("button");
-	namePlayerOne.textContent = "Change Name";
 }
 
 export { boardPlacer };
