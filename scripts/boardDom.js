@@ -4,21 +4,11 @@ import { randomMove } from "./robot.js";
 function placeAllShips(player) {
 	if (player.playerNumber === "player-two") {
 		if (player.playerNumber === "player-two" && player.robot === true) {
-			let rightSettings = document.querySelector(".settings .right");
-			let smallRightSettings = document.querySelector(".small-right");
+			let i = 0;
 
-			let placeShipPlayerTwo = document.createElement("div");
-			placeShipPlayerTwo.textContent = "Place All Ships";
-
-			let placeShipPlayerTwo1 = document.createElement("div");
-			placeShipPlayerTwo1.textContent = "Place All Ships";
-
-			rightSettings.appendChild(placeShipPlayerTwo);
-			smallRightSettings.appendChild(placeShipPlayerTwo1);
-
-			placeShipPlayerTwo.addEventListener("click", () => {});
-
-			placeShipPlayerTwo1.addEventListener("click", () => {});
+			while (i < 5) {
+				i += 1;
+			}
 		} else {
 			let rightSettings = document.querySelector(".settings .right");
 			let smallRightSettings = document.querySelector(".small-right");
