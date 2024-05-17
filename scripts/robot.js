@@ -3,8 +3,6 @@ function randomMove() {
 		let move = [Math.floor(Math.random() * 10), Math.floor(Math.random() * 10)];
 		let allSquares = document.querySelectorAll(".main-gameboard .player-one .gameboard .square");
 		let tempSquareStatus = allSquares[move[0] * 10 + move[1]];
-		console.log(move);
-		//console.log(allSquares[move[0] * 10 + move[1]]);
 
 		let uniqueMove = 0;
 		while (uniqueMove === 0) {
