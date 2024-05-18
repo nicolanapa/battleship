@@ -272,6 +272,9 @@ function placeAllShips(player) {
 					}
 				}
 			}
+
+			// Maybe
+			// alert(player.playerName + " has placed all its ships");
 		} else {
 			let rightSettings = document.querySelector(".settings .right");
 			let smallRightSettings = document.querySelector(".small-right");
