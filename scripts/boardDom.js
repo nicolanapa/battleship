@@ -1,14 +1,150 @@
 import { turn, turnDisabler } from "./turnDom.js";
 import { randomMove } from "./robot.js";
+import { Ship } from "./ship.js";
 
 function placeAllShips(player) {
 	if (player.playerNumber === "player-two") {
 		if (player.playerNumber === "player-two" && player.robot === true) {
 			let i = 0;
 
-			while (i < 5) {
+			while (i <= 5) {
 				i += 1;
+				let sizeShip = 0;
+				let randomPosition = Math.floor(Math.random() * 10);
+				let endPosition = 0;
+
+				if (i === 1) {
+					sizeShip = 5;
+
+					let newShip = new Ship(sizeShip, 0, false);
+
+					if (Math.floor(Math.random() * 1000) % 2 === 0) {
+						// Top to bottom
+						if (randomPosition - 5 >= 0) {
+							player.board.placeShip(newShip, [randomPosition - 4, randomPosition], [randomPosition, randomPosition]);
+						} else if (randomPosition + 5 <= 9) {
+							player.board.placeShip(newShip, [randomPosition, randomPosition], [randomPosition + 4, randomPosition]);
+						} else {
+							new Error("Out of range");
+						}
+					} else {
+						// Left to right
+						if (randomPosition - 5 >= 0) {
+							player.board.placeShip(newShip, [randomPosition, randomPosition - 4], [randomPosition, randomPosition]);
+						} else if (randomPosition + 5 <= 9) {
+							player.board.placeShip(newShip, [randomPosition, randomPosition], [randomPosition, randomPosition + 4]);
+						} else {
+							new Error("Out of range");
+						}
+					}
+				}
+
+				if (i === 2) {
+					sizeShip = 4;
+
+					let newShip = new Ship(sizeShip, 0, false);
+
+					if (Math.floor(Math.random() * 1000) % 2 === 0) {
+						// Top to bottom
+						if (randomPosition - 5 >= 0) {
+							player.board.placeShip(newShip, [randomPosition - 3, randomPosition], [randomPosition, randomPosition]);
+						} else if (randomPosition + 5 <= 9) {
+							player.board.placeShip(newShip, [randomPosition, randomPosition], [randomPosition + 3, randomPosition]);
+						} else {
+							new Error("Out of range");
+						}
+					} else {
+						// Left to right
+						if (randomPosition - 5 >= 0) {
+							player.board.placeShip(newShip, [randomPosition, randomPosition - 3], [randomPosition, randomPosition]);
+						} else if (randomPosition + 5 <= 9) {
+							player.board.placeShip(newShip, [randomPosition, randomPosition], [randomPosition, randomPosition + 3]);
+						} else {
+							new Error("Out of range");
+						}
+					}
+				}
+
+				if (i === 3) {
+					sizeShip = 3;
+
+					let newShip = new Ship(sizeShip, 0, false);
+
+					if (Math.floor(Math.random() * 1000) % 2 === 0) {
+						// Top to bottom
+						if (randomPosition - 5 >= 0) {
+							player.board.placeShip(newShip, [randomPosition - 2, randomPosition], [randomPosition, randomPosition]);
+						} else if (randomPosition + 5 <= 9) {
+							player.board.placeShip(newShip, [randomPosition, randomPosition], [randomPosition + 2, randomPosition]);
+						} else {
+							new Error("Out of range");
+						}
+					} else {
+						// Left to right
+						if (randomPosition - 5 >= 0) {
+							player.board.placeShip(newShip, [randomPosition, randomPosition - 2], [randomPosition, randomPosition]);
+						} else if (randomPosition + 5 <= 9) {
+							player.board.placeShip(newShip, [randomPosition, randomPosition], [randomPosition, randomPosition + 2]);
+						} else {
+							new Error("Out of range");
+						}
+					}
+				}
+
+				if (i === 4) {
+					sizeShip = 3;
+
+					let newShip = new Ship(sizeShip, 0, false);
+
+					if (Math.floor(Math.random() * 1000) % 2 === 0) {
+						// Top to bottom
+						if (randomPosition - 5 >= 0) {
+							player.board.placeShip(newShip, [randomPosition - 2, randomPosition], [randomPosition, randomPosition]);
+						} else if (randomPosition + 5 <= 9) {
+							player.board.placeShip(newShip, [randomPosition, randomPosition], [randomPosition + 2, randomPosition]);
+						} else {
+							new Error("Out of range");
+						}
+					} else {
+						// Left to right
+						if (randomPosition - 5 >= 0) {
+							player.board.placeShip(newShip, [randomPosition, randomPosition - 2], [randomPosition, randomPosition]);
+						} else if (randomPosition + 5 <= 9) {
+							player.board.placeShip(newShip, [randomPosition, randomPosition], [randomPosition, randomPosition + 2]);
+						} else {
+							new Error("Out of range");
+						}
+					}
+				}
+
+				if (i === 5) {
+					sizeShip = 2;
+
+					let newShip = new Ship(sizeShip, 0, false);
+
+					if (Math.floor(Math.random() * 1000) % 2 === 0) {
+						// Top to bottom
+						if (randomPosition - 5 >= 0) {
+							player.board.placeShip(newShip, [randomPosition - 1, randomPosition], [randomPosition, randomPosition]);
+						} else if (randomPosition + 5 <= 9) {
+							player.board.placeShip(newShip, [randomPosition, randomPosition], [randomPosition + 1, randomPosition]);
+						} else {
+							new Error("Out of range");
+						}
+					} else {
+						// Left to right
+						if (randomPosition - 5 >= 0) {
+							player.board.placeShip(newShip, [randomPosition, randomPosition - 1], [randomPosition, randomPosition]);
+						} else if (randomPosition + 5 <= 9) {
+							player.board.placeShip(newShip, [randomPosition, randomPosition], [randomPosition, randomPosition + 1]);
+						} else {
+							new Error("Out of range");
+						}
+					}
+				}
 			}
+
+			console.table(player.board.board);
 		} else {
 			let rightSettings = document.querySelector(".settings .right");
 			let smallRightSettings = document.querySelector(".small-right");
