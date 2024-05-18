@@ -3,17 +3,27 @@ import { randomMove } from "./robot.js";
 import { Ship } from "./ship.js";
 
 // Will be also used when the player has to place its Ships
-function checkIfBoardIsFree(player, randomPosition, verticalOrHorizontal, plusOrMinus) {
+function checkIfBoardIsFree(player, sizeShip, randomPosition, verticalOrHorizontal, plusOrMinus) {
 	if (verticalOrHorizontal === "vertical") {
 		if (plusOrMinus === "plus") {
-			for (let i = 0; i < 4; i++) {
+			for (let i = 0; i < sizeShip; i++) {
+				if (player.board[randomPosition][coordinate[1]] !== "" && this.board[coordinate[0]][coordinate[1]] !== 0) {
+				}
+			}
+		} else if (plusOrMinus === "minus") {
+			for (let i = 0; i < sizeShip; i++) {
 				if (player.board[randomPosition][coordinate[1]] !== "" && this.board[coordinate[0]][coordinate[1]] !== 0) {
 				}
 			}
 		}
 	} else if (verticalOrHorizontal === "horizontal") {
-		if (plusOrMinus === "minus") {
-			for (let i = 0; i < 4; i++) {
+		if (plusOrMinus === "plus") {
+			for (let i = 0; i < sizeShip; i++) {
+				if (player.board[randomPosition][coordinate[1]] !== "" && this.board[coordinate[0]][coordinate[1]] !== 0) {
+				}
+			}
+		} else if (plusOrMinus === "minus") {
+			for (let i = 0; i < sizeShip; i++) {
 				if (player.board[randomPosition][coordinate[1]] !== "" && this.board[coordinate[0]][coordinate[1]] !== 0) {
 				}
 			}
@@ -67,10 +77,10 @@ function placeAllShips(player) {
 						if (Math.floor(Math.random() * 1000) % 2 === 0) {
 							// Top to bottom
 							if (randomPosition - 5 >= 0) {
-								checkIfBoardIsFree(player, randomPosition, "vertical", "minus");
-
-								player.board.placeShip(newShip, [randomPosition - 3, randomPosition], [randomPosition, randomPosition]);
-								placedTheShip = true;
+								if (checkIfBoardIsFree(player, sizeShip, randomPosition, "vertical", "minus") === true) {
+									player.board.placeShip(newShip, [randomPosition - 3, randomPosition], [randomPosition, randomPosition]);
+									placedTheShip = true;
+								}
 							} else if (randomPosition + 5 <= 9) {
 								checkIfBoardIsFree(player, randomPosition, "vertical", "plus");
 
