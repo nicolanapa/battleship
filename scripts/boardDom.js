@@ -2,6 +2,25 @@ import { turn, turnDisabler } from "./turnDom.js";
 import { randomMove } from "./robot.js";
 import { Ship } from "./ship.js";
 
+// Will be also used when the player has to place its Ships
+function checkIfBoardIsFree(player, randomPosition, verticalOrHorizontal, plusOrMinus) {
+	if (verticalOrHorizontal === "vertical") {
+		if (plusOrMinus === "plus") {
+			for (let i = 0; i < 4; i++) {
+				if (player.board[randomPosition][coordinate[1]] !== "" && this.board[coordinate[0]][coordinate[1]] !== 0) {
+				}
+			}
+		}
+	} else if (verticalOrHorizontal === "horizontal") {
+		if (plusOrMinus === "minus") {
+			for (let i = 0; i < 4; i++) {
+				if (player.board[randomPosition][coordinate[1]] !== "" && this.board[coordinate[0]][coordinate[1]] !== 0) {
+				}
+			}
+		}
+	}
+}
+
 function placeAllShips(player) {
 	if (player.playerNumber === "player-two") {
 		if (player.playerNumber === "player-two" && player.robot === true) {
@@ -11,7 +30,7 @@ function placeAllShips(player) {
 				i += 1;
 				let sizeShip = 0;
 				let randomPosition = Math.floor(Math.random() * 10);
-				let endPosition = 0;
+				let placedTheShip = false;
 
 				if (i === 1) {
 					sizeShip = 5;
@@ -40,30 +59,46 @@ function placeAllShips(player) {
 				}
 
 				if (i === 2) {
-					sizeShip = 4;
+					while (placedTheShip === false) {
+						sizeShip = 4;
 
-					let newShip = new Ship(sizeShip, 0, false);
+						let newShip = new Ship(sizeShip, 0, false);
 
-					if (Math.floor(Math.random() * 1000) % 2 === 0) {
-						// Top to bottom
-						if (randomPosition - 5 >= 0) {
-							player.board.placeShip(newShip, [randomPosition - 3, randomPosition], [randomPosition, randomPosition]);
-						} else if (randomPosition + 5 <= 9) {
-							player.board.placeShip(newShip, [randomPosition, randomPosition], [randomPosition + 3, randomPosition]);
+						if (Math.floor(Math.random() * 1000) % 2 === 0) {
+							// Top to bottom
+							if (randomPosition - 5 >= 0) {
+								checkIfBoardIsFree(player, randomPosition, "vertical", "minus");
+
+								player.board.placeShip(newShip, [randomPosition - 3, randomPosition], [randomPosition, randomPosition]);
+								placedTheShip = true;
+							} else if (randomPosition + 5 <= 9) {
+								checkIfBoardIsFree(player, randomPosition, "vertical", "plus");
+
+								player.board.placeShip(newShip, [randomPosition, randomPosition], [randomPosition + 3, randomPosition]);
+								placedTheShip = true;
+							} else {
+								new Error("Out of range");
+							}
 						} else {
-							new Error("Out of range");
-						}
-					} else {
-						// Left to right
-						if (randomPosition - 5 >= 0) {
-							player.board.placeShip(newShip, [randomPosition, randomPosition - 3], [randomPosition, randomPosition]);
-						} else if (randomPosition + 5 <= 9) {
-							player.board.placeShip(newShip, [randomPosition, randomPosition], [randomPosition, randomPosition + 3]);
-						} else {
-							new Error("Out of range");
+							// Left to right
+							if (randomPosition - 5 >= 0) {
+								checkIfBoardIsFree(player, randomPosition, "horizontal", "minus");
+
+								player.board.placeShip(newShip, [randomPosition, randomPosition - 3], [randomPosition, randomPosition]);
+								placedTheShip = true;
+							} else if (randomPosition + 5 <= 9) {
+								checkIfBoardIsFree(player, randomPosition, "horizontal", "plus");
+
+								player.board.placeShip(newShip, [randomPosition, randomPosition], [randomPosition, randomPosition + 3]);
+								placedTheShip = true;
+							} else {
+								new Error("Out of range");
+							}
 						}
 					}
 				}
+
+				placedTheShip = false;
 
 				if (i === 3) {
 					sizeShip = 3;
@@ -91,6 +126,8 @@ function placeAllShips(player) {
 					}
 				}
 
+				placedTheShip = false;
+
 				if (i === 4) {
 					sizeShip = 3;
 
@@ -116,6 +153,8 @@ function placeAllShips(player) {
 						}
 					}
 				}
+
+				placedTheShip = false;
 
 				if (i === 5) {
 					sizeShip = 2;
