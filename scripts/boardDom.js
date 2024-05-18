@@ -272,8 +272,6 @@ function placeAllShips(player) {
 					}
 				}
 			}
-
-			console.table(player.board.board);
 		} else {
 			let rightSettings = document.querySelector(".settings .right");
 			let smallRightSettings = document.querySelector(".small-right");
