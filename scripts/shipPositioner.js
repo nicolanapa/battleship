@@ -1,3 +1,5 @@
+import { checkIfBoardIsFree, checkIfBoardIsRandomlyFree } from "./boardChecker.js";
+
 function placeAllShips(player) {
 	if (player.playerNumber === "player-two") {
 		if (player.playerNumber === "player-two" && player.robot === true) {
