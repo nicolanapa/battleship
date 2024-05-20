@@ -50,6 +50,8 @@ function justEnabler() {
 
 	playerOneBoard.classList.remove("disabled");
 	playerTwoBoard.classList.remove("disabled");
+
+	alert("You can play now!");
 }
 
 export { turn, turnDisabler, justDisabler, justEnabler };
