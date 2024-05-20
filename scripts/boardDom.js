@@ -3,7 +3,33 @@ import { randomMove } from "./robot.js";
 import { Ship } from "./ship.js";
 
 // Will be also used when the player has to place its Ships
-function checkIfBoardIsFree(player, sizeShip, randomPosition, verticalOrHorizontal, plusOrMinus) {
+function checkIfBoardIsFree(player, sizeShip, coordinateStart, coordinateEnd, verticalOrHorizontal) {
+	let i2 = 0;
+
+	if (verticalOrHorizontal === "vertical") {
+		for (let i = coordinateStart[0]; i < coordinateEnd[0]; i++) {
+			i2 += 1;
+			if (player.board.board[i][coordinateStart[1]] !== 0) {
+				return false;
+			}
+		}
+	} else if (verticalOrHorizontal === "horizontal") {
+		for (let i = coordinateStart[1]; i < coordinateEnd[1]; i++) {
+			i2 += 1;
+			if (player.board.board[coordinateStart[0]][i] !== 0) {
+				return false;
+			}
+		}
+	}
+
+	if (i2 === sizeShip) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function checkIfBoardIsRandomlyFree(player, sizeShip, randomPosition, verticalOrHorizontal, plusOrMinus) {
 	if (verticalOrHorizontal === "vertical") {
 		if (plusOrMinus === "minus") {
 			for (let i = 0; i < sizeShip; i++) {
@@ -83,14 +109,14 @@ function placeAllShips(player) {
 						if (Math.floor(Math.random() * 1000) % 2 === 0) {
 							// Top to bottom
 							if (randomPosition - 4 >= 0) {
-								if (checkIfBoardIsFree(player, sizeShip, randomPosition, "vertical", "minus") === true) {
+								if (checkIfBoardIsRandomlyFree(player, sizeShip, randomPosition, "vertical", "minus") === true) {
 									player.board.placeShip(newShip, [randomPosition - 3, randomPosition], [randomPosition, randomPosition]);
 									placedTheShip = true;
 								} else {
 									randomPosition = Math.floor(Math.random() * 10);
 								}
 							} else if (randomPosition + 4 <= 9) {
-								if (checkIfBoardIsFree(player, sizeShip, randomPosition, "vertical", "plus") === true) {
+								if (checkIfBoardIsRandomlyFree(player, sizeShip, randomPosition, "vertical", "plus") === true) {
 									player.board.placeShip(newShip, [randomPosition, randomPosition], [randomPosition + 3, randomPosition]);
 									placedTheShip = true;
 								} else {
@@ -102,14 +128,14 @@ function placeAllShips(player) {
 						} else {
 							// Left to right
 							if (randomPosition - 4 >= 0) {
-								if (checkIfBoardIsFree(player, sizeShip, randomPosition, "horizontal", "minus") === true) {
+								if (checkIfBoardIsRandomlyFree(player, sizeShip, randomPosition, "horizontal", "minus") === true) {
 									player.board.placeShip(newShip, [randomPosition, randomPosition - 3], [randomPosition, randomPosition]);
 									placedTheShip = true;
 								} else {
 									randomPosition = Math.floor(Math.random() * 10);
 								}
 							} else if (randomPosition + 4 <= 9) {
-								if (checkIfBoardIsFree(player, sizeShip, randomPosition, "horizontal", "plus") === true) {
+								if (checkIfBoardIsRandomlyFree(player, sizeShip, randomPosition, "horizontal", "plus") === true) {
 									player.board.placeShip(newShip, [randomPosition, randomPosition], [randomPosition, randomPosition + 3]);
 									placedTheShip = true;
 								} else {
@@ -133,14 +159,14 @@ function placeAllShips(player) {
 						if (Math.floor(Math.random() * 1000) % 2 === 0) {
 							// Top to bottom
 							if (randomPosition - 3 >= 0) {
-								if (checkIfBoardIsFree(player, sizeShip, randomPosition, "vertical", "minus") === true) {
+								if (checkIfBoardIsRandomlyFree(player, sizeShip, randomPosition, "vertical", "minus") === true) {
 									player.board.placeShip(newShip, [randomPosition - 2, randomPosition], [randomPosition, randomPosition]);
 									placedTheShip = true;
 								} else {
 									randomPosition = Math.floor(Math.random() * 10);
 								}
 							} else if (randomPosition + 3 <= 9) {
-								if (checkIfBoardIsFree(player, sizeShip, randomPosition, "vertical", "plus") === true) {
+								if (checkIfBoardIsRandomlyFree(player, sizeShip, randomPosition, "vertical", "plus") === true) {
 									player.board.placeShip(newShip, [randomPosition, randomPosition], [randomPosition + 2, randomPosition]);
 									placedTheShip = true;
 								} else {
@@ -152,14 +178,14 @@ function placeAllShips(player) {
 						} else {
 							// Left to right
 							if (randomPosition - 3 >= 0) {
-								if (checkIfBoardIsFree(player, sizeShip, randomPosition, "horizontal", "minus") === true) {
+								if (checkIfBoardIsRandomlyFree(player, sizeShip, randomPosition, "horizontal", "minus") === true) {
 									player.board.placeShip(newShip, [randomPosition, randomPosition - 2], [randomPosition, randomPosition]);
 									placedTheShip = true;
 								} else {
 									randomPosition = Math.floor(Math.random() * 10);
 								}
 							} else if (randomPosition + 3 <= 9) {
-								if (checkIfBoardIsFree(player, sizeShip, randomPosition, "horizontal", "plus") === true) {
+								if (checkIfBoardIsRandomlyFree(player, sizeShip, randomPosition, "horizontal", "plus") === true) {
 									player.board.placeShip(newShip, [randomPosition, randomPosition], [randomPosition, randomPosition + 2]);
 									placedTheShip = true;
 								} else {
@@ -183,14 +209,14 @@ function placeAllShips(player) {
 						if (Math.floor(Math.random() * 1000) % 2 === 0) {
 							// Top to bottom
 							if (randomPosition - 3 >= 0) {
-								if (checkIfBoardIsFree(player, sizeShip, randomPosition, "vertical", "minus") === true) {
+								if (checkIfBoardIsRandomlyFree(player, sizeShip, randomPosition, "vertical", "minus") === true) {
 									player.board.placeShip(newShip, [randomPosition - 2, randomPosition], [randomPosition, randomPosition]);
 									placedTheShip = true;
 								} else {
 									randomPosition = Math.floor(Math.random() * 10);
 								}
 							} else if (randomPosition + 3 <= 9) {
-								if (checkIfBoardIsFree(player, sizeShip, randomPosition, "vertical", "plus") === true) {
+								if (checkIfBoardIsRandomlyFree(player, sizeShip, randomPosition, "vertical", "plus") === true) {
 									player.board.placeShip(newShip, [randomPosition, randomPosition], [randomPosition + 2, randomPosition]);
 									placedTheShip = true;
 								} else {
@@ -202,14 +228,14 @@ function placeAllShips(player) {
 						} else {
 							// Left to right
 							if (randomPosition - 3 >= 0) {
-								if (checkIfBoardIsFree(player, sizeShip, randomPosition, "horizontal", "minus") === true) {
+								if (checkIfBoardIsRandomlyFree(player, sizeShip, randomPosition, "horizontal", "minus") === true) {
 									player.board.placeShip(newShip, [randomPosition, randomPosition - 2], [randomPosition, randomPosition]);
 									placedTheShip = true;
 								} else {
 									randomPosition = Math.floor(Math.random() * 10);
 								}
 							} else if (randomPosition + 3 <= 9) {
-								if (checkIfBoardIsFree(player, sizeShip, randomPosition, "horizontal", "plus") === true) {
+								if (checkIfBoardIsRandomlyFree(player, sizeShip, randomPosition, "horizontal", "plus") === true) {
 									player.board.placeShip(newShip, [randomPosition, randomPosition], [randomPosition, randomPosition + 2]);
 									placedTheShip = true;
 								} else {
@@ -233,14 +259,14 @@ function placeAllShips(player) {
 						if (Math.floor(Math.random() * 1000) % 2 === 0) {
 							// Top to bottom
 							if (randomPosition - 2 >= 0) {
-								if (checkIfBoardIsFree(player, sizeShip, randomPosition, "vertical", "minus") === true) {
+								if (checkIfBoardIsRandomlyFree(player, sizeShip, randomPosition, "vertical", "minus") === true) {
 									player.board.placeShip(newShip, [randomPosition - 1, randomPosition], [randomPosition, randomPosition]);
 									placedTheShip = true;
 								} else {
 									randomPosition = Math.floor(Math.random() * 10);
 								}
 							} else if (randomPosition + 2 <= 9) {
-								if (checkIfBoardIsFree(player, sizeShip, randomPosition, "vertical", "plus") === true) {
+								if (checkIfBoardIsRandomlyFree(player, sizeShip, randomPosition, "vertical", "plus") === true) {
 									player.board.placeShip(newShip, [randomPosition, randomPosition], [randomPosition + 1, randomPosition]);
 									placedTheShip = true;
 								} else {
@@ -252,14 +278,14 @@ function placeAllShips(player) {
 						} else {
 							// Left to right
 							if (randomPosition - 2 >= 0) {
-								if (checkIfBoardIsFree(player, sizeShip, randomPosition, "horizontal", "minus") === true) {
+								if (checkIfBoardIsRandomlyFree(player, sizeShip, randomPosition, "horizontal", "minus") === true) {
 									player.board.placeShip(newShip, [randomPosition, randomPosition - 1], [randomPosition, randomPosition]);
 									placedTheShip = true;
 								} else {
 									randomPosition = Math.floor(Math.random() * 10);
 								}
 							} else if (randomPosition + 2 <= 9) {
-								if (checkIfBoardIsFree(player, sizeShip, randomPosition, "horizontal", "plus") === true) {
+								if (checkIfBoardIsRandomlyFree(player, sizeShip, randomPosition, "horizontal", "plus") === true) {
 									player.board.placeShip(newShip, [randomPosition, randomPosition], [randomPosition, randomPosition + 1]);
 									placedTheShip = true;
 								} else {
@@ -318,8 +344,7 @@ function placeAllShips(player) {
 								if (coordinateEnd[0] >= 0 && coordinateEnd[0] <= 9 && coordinateEnd[1] >= 0 && coordinateEnd[1] <= 9) {
 									if (coordinateStart[1] === coordinateEnd[1]) {
 										// Vertical
-										let plusOrMinus = coordinateStart[0] < coordinateEnd[0] ? "minus" : "plus";
-										if (checkIfBoardIsFree(player, sizeShip, coordinateStart[0], "vertical", plusOrMinus)) {
+										if (checkIfBoardIsFree(player, sizeShip, coordinateStart, coordinateEnd, "vertical")) {
 											player.board.placeShip(newShip, coordinateStart, coordinateEnd);
 											placedTheShip = true;
 										} else {
@@ -327,8 +352,7 @@ function placeAllShips(player) {
 										}
 									} else {
 										// Horizontal
-										let plusOrMinus = coordinateStart[1] < coordinateEnd[1] ? "minus" : "plus";
-										if (checkIfBoardIsFree(player, sizeShip, coordinateStart[1], "horizontal", plusOrMinus)) {
+										if (checkIfBoardIsFree(player, sizeShip, coordinateStart, coordinateEnd, "horizontal")) {
 											player.board.placeShip(newShip, coordinateStart, coordinateEnd);
 											placedTheShip = true;
 										} else {
@@ -346,6 +370,46 @@ function placeAllShips(player) {
 
 							while (placedTheShip === false) {
 								let newShip = new Ship(sizeShip, 0, false);
+
+								let coordinateStart = prompt(
+									"Write your start coordinate, you are currently placing the Battleship, size 4",
+									"[,]"
+								);
+
+								let coordinateEnd = prompt(
+									"Write your end coordinate, you are currently placing the Battleship, size 4",
+									"[,]"
+								);
+
+								coordinateStart = JSON.parse(coordinateStart);
+								coordinateEnd = JSON.parse(coordinateEnd);
+
+								if (
+									coordinateStart[0] >= 0 &&
+									coordinateStart[0] <= 9 &&
+									coordinateStart[1] >= 0 &&
+									coordinateStart[1] <= 9
+								) {
+									if (coordinateEnd[0] >= 0 && coordinateEnd[0] <= 9 && coordinateEnd[1] >= 0 && coordinateEnd[1] <= 9) {
+										if (coordinateStart[1] === coordinateEnd[1]) {
+											// Vertical
+											if (checkIfBoardIsFree(player, sizeShip, coordinateStart, coordinateEnd, "vertical")) {
+												player.board.placeShip(newShip, coordinateStart, coordinateEnd);
+												placedTheShip = true;
+											} else {
+												alert("Wrong coordinate please retry");
+											}
+										} else {
+											// Horizontal
+											if (checkIfBoardIsFree(player, sizeShip, coordinateStart, coordinateEnd, "horizontal")) {
+												player.board.placeShip(newShip, coordinateStart, coordinateEnd);
+												placedTheShip = true;
+											} else {
+												alert("Wrong coordinates please retry");
+											}
+										}
+									}
+								}
 							}
 						}
 
@@ -356,6 +420,45 @@ function placeAllShips(player) {
 
 							while (placedTheShip === false) {
 								let newShip = new Ship(sizeShip, 0, false);
+								let coordinateStart = prompt(
+									"Write your start coordinate, you are currently placing the Cruiser, size 3",
+									"[,]"
+								);
+
+								let coordinateEnd = prompt(
+									"Write your end coordinate, you are currently placing the Cruiser, size 3",
+									"[,]"
+								);
+
+								coordinateStart = JSON.parse(coordinateStart);
+								coordinateEnd = JSON.parse(coordinateEnd);
+
+								if (
+									coordinateStart[0] >= 0 &&
+									coordinateStart[0] <= 9 &&
+									coordinateStart[1] >= 0 &&
+									coordinateStart[1] <= 9
+								) {
+									if (coordinateEnd[0] >= 0 && coordinateEnd[0] <= 9 && coordinateEnd[1] >= 0 && coordinateEnd[1] <= 9) {
+										if (coordinateStart[1] === coordinateEnd[1]) {
+											// Vertical
+											if (checkIfBoardIsFree(player, sizeShip, coordinateStart, coordinateEnd, "vertical")) {
+												player.board.placeShip(newShip, coordinateStart, coordinateEnd);
+												placedTheShip = true;
+											} else {
+												alert("Wrong coordinate please retry");
+											}
+										} else {
+											// Horizontal
+											if (checkIfBoardIsFree(player, sizeShip, coordinateStart, coordinateEnd, "horizontal")) {
+												player.board.placeShip(newShip, coordinateStart, coordinateEnd);
+												placedTheShip = true;
+											} else {
+												alert("Wrong coordinates please retry");
+											}
+										}
+									}
+								}
 							}
 						}
 
@@ -383,6 +486,8 @@ function placeAllShips(player) {
 			});
 
 			placeShipPlayerTwo1.addEventListener("click", () => {});
+
+			console.table(player.board.board);
 		}
 	} else {
 		let leftSettings = document.querySelector(".settings .left");
