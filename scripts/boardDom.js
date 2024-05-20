@@ -319,53 +319,64 @@ function placeAllShips(player) {
 									if (coordinateStart[1] === coordinateEnd[1]) {
 										// Vertical
 										let plusOrMinus = coordinateStart[0] < coordinateEnd[0] ? "minus" : "plus";
-										if (checkIfBoardIsFree(player, sizeShip, coordinateStart, "vertical", plusOrMinus)) {
-											
+										if (checkIfBoardIsFree(player, sizeShip, coordinateStart[0], "vertical", plusOrMinus)) {
+											player.board.placeShip(newShip, coordinateStart, coordinateEnd);
+											placedTheShip = true;
 										} else {
+											alert("Wrong coordinate please retry");
+										}
+									} else {
 										// Horizontal
+										let plusOrMinus = coordinateStart[1] < coordinateEnd[1] ? "minus" : "plus";
+										if (checkIfBoardIsFree(player, sizeShip, coordinateStart[1], "horizontal", plusOrMinus)) {
+											player.board.placeShip(newShip, coordinateStart, coordinateEnd);
+											placedTheShip = true;
+										} else {
+											alert("Wrong coordinates please retry");
+										}
 									}
 								}
 							}
 						}
-					}
 
-					placedTheShip = false;
+						placedTheShip = false;
 
-					if (i === 2) {
-						sizeShip = 4;
+						if (i === 2) {
+							sizeShip = 4;
 
-						while (placedTheShip === false) {
-							let newShip = new Ship(sizeShip, 0, false);
+							while (placedTheShip === false) {
+								let newShip = new Ship(sizeShip, 0, false);
+							}
 						}
-					}
 
-					placedTheShip = false;
+						placedTheShip = false;
 
-					if (i === 3) {
-						sizeShip = 3;
+						if (i === 3) {
+							sizeShip = 3;
 
-						while (placedTheShip === false) {
-							let newShip = new Ship(sizeShip, 0, false);
+							while (placedTheShip === false) {
+								let newShip = new Ship(sizeShip, 0, false);
+							}
 						}
-					}
 
-					placedTheShip = false;
+						placedTheShip = false;
 
-					if (i === 4) {
-						sizeShip = 3;
+						if (i === 4) {
+							sizeShip = 3;
 
-						while (placedTheShip === false) {
-							let newShip = new Ship(sizeShip, 0, false);
+							while (placedTheShip === false) {
+								let newShip = new Ship(sizeShip, 0, false);
+							}
 						}
-					}
 
-					placedTheShip = false;
+						placedTheShip = false;
 
-					if (i === 5) {
-						sizeShip = 2;
+						if (i === 5) {
+							sizeShip = 2;
 
-						while (placedTheShip === false) {
-							let newShip = new Ship(sizeShip, 0, false);
+							while (placedTheShip === false) {
+								let newShip = new Ship(sizeShip, 0, false);
+							}
 						}
 					}
 				}
