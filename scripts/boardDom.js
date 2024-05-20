@@ -94,7 +94,6 @@ function boardPlacer(player) {
 	if (player.playerNumber === "player-two" && player.robot === true) {
 		document.querySelector("." + player.playerNumber + " .player-informations .robot").textContent = "ROBOT";
 		document.querySelector(".main-gameboard .player-one .gameboard").classList.add("disabled");
-		document.querySelector(".main-gameboard .player-one .gameboard").classList.add("disabled");
 		/*document.querySelectorAll(".placement-right")[0].classList.add("disabled");
 		document.querySelectorAll(".placement-right")[1].classList.add("disabled");*/
 
