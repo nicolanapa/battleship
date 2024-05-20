@@ -6,7 +6,7 @@ import { boardPlacer } from "./boardDom.js";
 // Random name until choosen
 let playerOne = new Player("User" + Math.floor(Math.random() * 10000), "player-one", false);
 //let playerTwo = new Player("Moro", "player-two", false);
-let playerTwo = new Player("User" + Math.floor(Math.random() * 10000), "player-two", true);
+let playerTwo = new Player("User" + Math.floor(Math.random() * 10000), "player-two", false);
 
 /*playerOne.board.placeShip(new Ship(5, 0, false), [2, 3], [2, 7]);
 playerOne.board.placeShip(new Ship(3, 0, false), [3, 1], [5, 1]);
