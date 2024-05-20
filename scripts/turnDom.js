@@ -44,12 +44,18 @@ function justDisabler() {
 	playerTwoBoard.classList.add("disabled");
 }
 
-function justEnabler() {
+function justEnabler(robotOrNot) {
 	let playerOneBoard = document.querySelector(".main-gameboard .player-one .gameboard");
 	let playerTwoBoard = document.querySelector(".main-gameboard .player-two .gameboard");
 
-	playerOneBoard.classList.remove("disabled");
-	playerTwoBoard.classList.remove("disabled");
+	if (robotOrNot) {
+		playerOneBoard.classList.add("disabled");
+		playerOneBoard.classList.add("blur");
+		playerTwoBoard.classList.remove("disabled");
+	} else {
+		playerOneBoard.classList.remove("disabled");
+		playerTwoBoard.classList.remove("disabled");
+	}
 
 	alert("You can play now!");
 }
