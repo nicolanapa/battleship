@@ -3,21 +3,39 @@ import { Gameboard } from "./gameboard.js";
 import { Player } from "./player.js";
 import { boardPlacer } from "./boardDom.js";
 
-// Random name until choosen
 let playerOne = new Player("User" + Math.floor(Math.random() * 10000), "player-one", false);
-//let playerTwo = new Player("Moro", "player-two", false);
-let playerTwo = new Player("User" + Math.floor(Math.random() * 10000), "player-two", false);
-
-/*playerOne.board.placeShip(new Ship(5, 0, false), [2, 3], [2, 7]);
-playerOne.board.placeShip(new Ship(3, 0, false), [3, 1], [5, 1]);
-playerOne.board.placeShip(new Ship(2, 0, false), [1, 0], [1, 1]);
-playerOne.board.placeShip(new Ship(4, 0, false), [6, 6], [6, 9]);
-playerOne.board.placeShip(new Ship(2, 0, false), [4, 3], [5, 3]);
-
-playerTwo.board.placeShip(new Ship(5, 0, false), [2, 3], [2, 7]);
-playerTwo.board.placeShip(new Ship(3, 0, false), [3, 1], [5, 1]);
-playerTwo.board.placeShip(new Ship(2, 0, false), [1, 0], [1, 1]);
-playerTwo.board.placeShip(new Ship(4, 0, false), [6, 6], [6, 9]);*/
+let playerTwo = new Player("User" + Math.floor(Math.random() * 10000), "player-two", true);
 
 boardPlacer(playerOne);
 boardPlacer(playerTwo);
+
+let playersMode = document.querySelector(".two-players-mode");
+let smallPlayersMode = document.querySelector(".small-two-players-mode");
+
+playersMode.addEventListener("click", () => {
+	if (playerTwo.robot === false) {
+		playerTwo.robot = true;
+
+		playersMode.textContent = "2-Players Mode -> YES";
+	} else {
+		playerTwo.robot = false;
+
+		playersMode.textContent = "2-Players Mode -> NO";
+	}
+
+	//boardPlacer(playerTwo);
+});
+
+smallPlayersMode.addEventListener("click", () => {
+	if (playerTwo.robot === false) {
+		playerTwo.robot = true;
+
+		smallPlayersMode.textContent = "2-Players Mode -> YES";
+	} else {
+		playerTwo.robot = false;
+
+		smallPlayersMode.textContent = "2-Players Mode -> NO";
+	}
+
+	//boardPlacer(playerTwo);
+});
