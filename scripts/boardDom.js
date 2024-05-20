@@ -1,4 +1,4 @@
-import { turn, turnDisabler } from "./turnDom.js";
+import { justDisabler, turn, turnDisabler } from "./turnDom.js";
 import { randomMove } from "./robot.js";
 import { Ship } from "./ship.js";
 
@@ -275,7 +275,7 @@ function placeAllShips(player) {
 
 			// Maybe
 			// alert(player.playerName + " has placed all its ships");
-		} else {
+		} else if (player.playerNumber === "player-two" && player.robot === false) {
 			let rightSettings = document.querySelector(".settings .right");
 			let smallRightSettings = document.querySelector(".small-right");
 
@@ -288,7 +288,88 @@ function placeAllShips(player) {
 			rightSettings.appendChild(placeShipPlayerTwo);
 			smallRightSettings.appendChild(placeShipPlayerTwo1);
 
-			placeShipPlayerTwo.addEventListener("click", () => {});
+			placeShipPlayerTwo.addEventListener("click", () => {
+				let i = 0;
+
+				while (i <= 5) {
+					i += 1;
+					let sizeShip = 0;
+					let placedTheShip = false;
+
+					if (i === 1) {
+						sizeShip = 5;
+
+						let newShip = new Ship(sizeShip, 0, false);
+
+						while (placedTheShip === false) {
+							let newShip = new Ship(sizeShip, 0, false);
+
+							let coordinateStart = prompt(
+								"Write your start coordinate, you are currently placing the Carrier, size 5. A coordinate is written in this format: [vertical position, horizontal position]",
+								"[,]"
+							);
+
+							let coordinateEnd = prompt("Write your end coordinate, you are currently placing the Carrier, size 5", "[,]");
+
+							coordinateStart = JSON.parse(coordinateStart);
+							coordinateEnd = JSON.parse(coordinateEnd);
+
+							if (coordinateStart[0] >= 0 && coordinateStart[0] <= 9 && coordinateStart[1] >= 0 && coordinateStart[1] <= 9) {
+								if (coordinateEnd[0] >= 0 && coordinateEnd[0] <= 9 && coordinateEnd[1] >= 0 && coordinateEnd[1] <= 9) {
+									if (coordinateStart[1] === coordinateEnd[1]) {
+										// Vertical
+										let plusOrMinus = coordinateStart[0] < coordinateEnd[0] ? "minus" : "plus";
+										if (checkIfBoardIsFree(player, sizeShip, coordinateStart, "vertical", plusOrMinus)) {
+											
+										} else {
+										// Horizontal
+									}
+								}
+							}
+						}
+					}
+
+					placedTheShip = false;
+
+					if (i === 2) {
+						sizeShip = 4;
+
+						while (placedTheShip === false) {
+							let newShip = new Ship(sizeShip, 0, false);
+						}
+					}
+
+					placedTheShip = false;
+
+					if (i === 3) {
+						sizeShip = 3;
+
+						while (placedTheShip === false) {
+							let newShip = new Ship(sizeShip, 0, false);
+						}
+					}
+
+					placedTheShip = false;
+
+					if (i === 4) {
+						sizeShip = 3;
+
+						while (placedTheShip === false) {
+							let newShip = new Ship(sizeShip, 0, false);
+						}
+					}
+
+					placedTheShip = false;
+
+					if (i === 5) {
+						sizeShip = 2;
+
+						while (placedTheShip === false) {
+							let newShip = new Ship(sizeShip, 0, false);
+						}
+					}
+				}
+			});
 
 			placeShipPlayerTwo1.addEventListener("click", () => {});
 		}
@@ -405,6 +486,7 @@ function boardPlacer(player) {
 
 	placeAllShips(player);
 	nameSelection(player, playerName);
+	justDisabler();
 }
 
 export { boardPlacer };
