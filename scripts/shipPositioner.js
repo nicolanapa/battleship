@@ -1,6 +1,201 @@
 import { checkIfBoardIsFree, checkIfBoardIsRandomlyFree } from "./boardChecker.js";
 import { Ship } from "./ship.js";
 
+function playerPlacing(player) {
+	let sizeShip = 0;
+	let placedTheShip = false;
+
+	sizeShip = 5;
+
+	let newShip = new Ship(sizeShip, 0, false);
+
+	while (placedTheShip === false) {
+		let newShip = new Ship(sizeShip, 0, false);
+
+		let coordinateStart = prompt(
+			"Write your start coordinate, you are currently placing the Carrier, size 5. A coordinate is written in this format: [vertical position, horizontal position]",
+			"[,]"
+		);
+
+		let coordinateEnd = prompt("Write your end coordinate, you are currently placing the Carrier, size 5", "[,]");
+
+		coordinateStart = JSON.parse(coordinateStart);
+		coordinateEnd = JSON.parse(coordinateEnd);
+
+		if (coordinateStart[0] >= 0 && coordinateStart[0] <= 9 && coordinateStart[1] >= 0 && coordinateStart[1] <= 9) {
+			if (coordinateEnd[0] >= 0 && coordinateEnd[0] <= 9 && coordinateEnd[1] >= 0 && coordinateEnd[1] <= 9) {
+				if (coordinateStart[1] === coordinateEnd[1]) {
+					// Vertical
+					if (checkIfBoardIsFree(player, sizeShip, coordinateStart, coordinateEnd, "vertical")) {
+						player.board.placeShip(newShip, coordinateStart, coordinateEnd);
+						placedTheShip = true;
+					} else {
+						alert("Wrong coordinate please retry");
+					}
+				} else {
+					// Horizontal
+					if (checkIfBoardIsFree(player, sizeShip, coordinateStart, coordinateEnd, "horizontal")) {
+						player.board.placeShip(newShip, coordinateStart, coordinateEnd);
+						placedTheShip = true;
+					} else {
+						alert("Wrong coordinates please retry");
+					}
+				}
+			}
+		}
+
+		placedTheShip = false;
+
+		sizeShip = 4;
+
+		while (placedTheShip === false) {
+			let newShip = new Ship(sizeShip, 0, false);
+
+			let coordinateStart = prompt("Write your start coordinate, you are currently placing the Battleship, size 4", "[,]");
+
+			let coordinateEnd = prompt("Write your end coordinate, you are currently placing the Battleship, size 4", "[,]");
+
+			coordinateStart = JSON.parse(coordinateStart);
+			coordinateEnd = JSON.parse(coordinateEnd);
+
+			if (coordinateStart[0] >= 0 && coordinateStart[0] <= 9 && coordinateStart[1] >= 0 && coordinateStart[1] <= 9) {
+				if (coordinateEnd[0] >= 0 && coordinateEnd[0] <= 9 && coordinateEnd[1] >= 0 && coordinateEnd[1] <= 9) {
+					if (coordinateStart[1] === coordinateEnd[1]) {
+						// Vertical
+						if (checkIfBoardIsFree(player, sizeShip, coordinateStart, coordinateEnd, "vertical")) {
+							player.board.placeShip(newShip, coordinateStart, coordinateEnd);
+							placedTheShip = true;
+						} else {
+							alert("Wrong coordinate please retry");
+						}
+					} else {
+						// Horizontal
+						if (checkIfBoardIsFree(player, sizeShip, coordinateStart, coordinateEnd, "horizontal")) {
+							player.board.placeShip(newShip, coordinateStart, coordinateEnd);
+							placedTheShip = true;
+						} else {
+							alert("Wrong coordinates please retry");
+						}
+					}
+				}
+			}
+		}
+
+		placedTheShip = false;
+
+		sizeShip = 3;
+
+		while (placedTheShip === false) {
+			let newShip = new Ship(sizeShip, 0, false);
+
+			let coordinateStart = prompt("Write your start coordinate, you are currently placing the Cruiser, size 3", "[,]");
+
+			let coordinateEnd = prompt("Write your end coordinate, you are currently placing the Cruiser, size 3", "[,]");
+
+			coordinateStart = JSON.parse(coordinateStart);
+			coordinateEnd = JSON.parse(coordinateEnd);
+
+			if (coordinateStart[0] >= 0 && coordinateStart[0] <= 9 && coordinateStart[1] >= 0 && coordinateStart[1] <= 9) {
+				if (coordinateEnd[0] >= 0 && coordinateEnd[0] <= 9 && coordinateEnd[1] >= 0 && coordinateEnd[1] <= 9) {
+					if (coordinateStart[1] === coordinateEnd[1]) {
+						// Vertical
+						if (checkIfBoardIsFree(player, sizeShip, coordinateStart, coordinateEnd, "vertical")) {
+							player.board.placeShip(newShip, coordinateStart, coordinateEnd);
+							placedTheShip = true;
+						} else {
+							alert("Wrong coordinate please retry");
+						}
+					} else {
+						// Horizontal
+						if (checkIfBoardIsFree(player, sizeShip, coordinateStart, coordinateEnd, "horizontal")) {
+							player.board.placeShip(newShip, coordinateStart, coordinateEnd);
+							placedTheShip = true;
+						} else {
+							alert("Wrong coordinates please retry");
+						}
+					}
+				}
+			}
+		}
+
+		placedTheShip = false;
+
+		sizeShip = 3;
+
+		while (placedTheShip === false) {
+			let newShip = new Ship(sizeShip, 0, false);
+
+			let coordinateStart = prompt("Write your start coordinate, you are currently placing the Submarine, size 3", "[,]");
+
+			let coordinateEnd = prompt("Write your end coordinate, you are currently placing the Submarine, size 3", "[,]");
+
+			coordinateStart = JSON.parse(coordinateStart);
+			coordinateEnd = JSON.parse(coordinateEnd);
+
+			if (coordinateStart[0] >= 0 && coordinateStart[0] <= 9 && coordinateStart[1] >= 0 && coordinateStart[1] <= 9) {
+				if (coordinateEnd[0] >= 0 && coordinateEnd[0] <= 9 && coordinateEnd[1] >= 0 && coordinateEnd[1] <= 9) {
+					if (coordinateStart[1] === coordinateEnd[1]) {
+						// Vertical
+						if (checkIfBoardIsFree(player, sizeShip, coordinateStart, coordinateEnd, "vertical")) {
+							player.board.placeShip(newShip, coordinateStart, coordinateEnd);
+							placedTheShip = true;
+						} else {
+							alert("Wrong coordinate please retry");
+						}
+					} else {
+						// Horizontal
+						if (checkIfBoardIsFree(player, sizeShip, coordinateStart, coordinateEnd, "horizontal")) {
+							player.board.placeShip(newShip, coordinateStart, coordinateEnd);
+							placedTheShip = true;
+						} else {
+							alert("Wrong coordinates please retry");
+						}
+					}
+				}
+			}
+		}
+
+		placedTheShip = false;
+
+		sizeShip = 2;
+
+		while (placedTheShip === false) {
+			let newShip = new Ship(sizeShip, 0, false);
+
+			let coordinateStart = prompt("Write your start coordinate, you are currently placing the Destroyer, size 2", "[,]");
+
+			let coordinateEnd = prompt("Write your end coordinate, you are currently placing the Destroyer, size 2", "[,]");
+
+			coordinateStart = JSON.parse(coordinateStart);
+			coordinateEnd = JSON.parse(coordinateEnd);
+
+			if (coordinateStart[0] >= 0 && coordinateStart[0] <= 9 && coordinateStart[1] >= 0 && coordinateStart[1] <= 9) {
+				if (coordinateEnd[0] >= 0 && coordinateEnd[0] <= 9 && coordinateEnd[1] >= 0 && coordinateEnd[1] <= 9) {
+					if (coordinateStart[1] === coordinateEnd[1]) {
+						// Vertical
+						if (checkIfBoardIsFree(player, sizeShip, coordinateStart, coordinateEnd, "vertical")) {
+							player.board.placeShip(newShip, coordinateStart, coordinateEnd);
+							placedTheShip = true;
+						} else {
+							alert("Wrong coordinate please retry");
+						}
+					} else {
+						// Horizontal
+						if (checkIfBoardIsFree(player, sizeShip, coordinateStart, coordinateEnd, "horizontal")) {
+							player.board.placeShip(newShip, coordinateStart, coordinateEnd);
+							placedTheShip = true;
+						} else {
+							alert("Wrong coordinates please retry");
+						}
+					}
+				}
+			}
+		}
+
+		console.table(player.board.board);
+	}
+}
+
 function placeAllShips(player) {
 	if (player.playerNumber === "player-two") {
 		if (player.playerNumber === "player-two" && player.robot === true) {
@@ -252,203 +447,7 @@ function placeAllShips(player) {
 			rightSettings.appendChild(placeShipPlayerTwo);
 			smallRightSettings.appendChild(placeShipPlayerTwo1);
 
-			placeShipPlayerTwo.addEventListener("click", () => {
-				let sizeShip = 0;
-				let placedTheShip = false;
-
-				sizeShip = 5;
-
-				let newShip = new Ship(sizeShip, 0, false);
-
-				while (placedTheShip === false) {
-					let newShip = new Ship(sizeShip, 0, false);
-
-					let coordinateStart = prompt(
-						"Write your start coordinate, you are currently placing the Carrier, size 5. A coordinate is written in this format: [vertical position, horizontal position]",
-						"[,]"
-					);
-
-					let coordinateEnd = prompt("Write your end coordinate, you are currently placing the Carrier, size 5", "[,]");
-
-					coordinateStart = JSON.parse(coordinateStart);
-					coordinateEnd = JSON.parse(coordinateEnd);
-
-					if (coordinateStart[0] >= 0 && coordinateStart[0] <= 9 && coordinateStart[1] >= 0 && coordinateStart[1] <= 9) {
-						if (coordinateEnd[0] >= 0 && coordinateEnd[0] <= 9 && coordinateEnd[1] >= 0 && coordinateEnd[1] <= 9) {
-							if (coordinateStart[1] === coordinateEnd[1]) {
-								// Vertical
-								if (checkIfBoardIsFree(player, sizeShip, coordinateStart, coordinateEnd, "vertical")) {
-									player.board.placeShip(newShip, coordinateStart, coordinateEnd);
-									placedTheShip = true;
-								} else {
-									alert("Wrong coordinate please retry");
-								}
-							} else {
-								// Horizontal
-								if (checkIfBoardIsFree(player, sizeShip, coordinateStart, coordinateEnd, "horizontal")) {
-									player.board.placeShip(newShip, coordinateStart, coordinateEnd);
-									placedTheShip = true;
-								} else {
-									alert("Wrong coordinates please retry");
-								}
-							}
-						}
-					}
-
-					placedTheShip = false;
-
-					sizeShip = 4;
-
-					while (placedTheShip === false) {
-						let newShip = new Ship(sizeShip, 0, false);
-
-						let coordinateStart = prompt(
-							"Write your start coordinate, you are currently placing the Battleship, size 4",
-							"[,]"
-						);
-
-						let coordinateEnd = prompt("Write your end coordinate, you are currently placing the Battleship, size 4", "[,]");
-
-						coordinateStart = JSON.parse(coordinateStart);
-						coordinateEnd = JSON.parse(coordinateEnd);
-
-						if (coordinateStart[0] >= 0 && coordinateStart[0] <= 9 && coordinateStart[1] >= 0 && coordinateStart[1] <= 9) {
-							if (coordinateEnd[0] >= 0 && coordinateEnd[0] <= 9 && coordinateEnd[1] >= 0 && coordinateEnd[1] <= 9) {
-								if (coordinateStart[1] === coordinateEnd[1]) {
-									// Vertical
-									if (checkIfBoardIsFree(player, sizeShip, coordinateStart, coordinateEnd, "vertical")) {
-										player.board.placeShip(newShip, coordinateStart, coordinateEnd);
-										placedTheShip = true;
-									} else {
-										alert("Wrong coordinate please retry");
-									}
-								} else {
-									// Horizontal
-									if (checkIfBoardIsFree(player, sizeShip, coordinateStart, coordinateEnd, "horizontal")) {
-										player.board.placeShip(newShip, coordinateStart, coordinateEnd);
-										placedTheShip = true;
-									} else {
-										alert("Wrong coordinates please retry");
-									}
-								}
-							}
-						}
-					}
-
-					placedTheShip = false;
-
-					sizeShip = 3;
-
-					while (placedTheShip === false) {
-						let newShip = new Ship(sizeShip, 0, false);
-
-						let coordinateStart = prompt("Write your start coordinate, you are currently placing the Cruiser, size 3", "[,]");
-
-						let coordinateEnd = prompt("Write your end coordinate, you are currently placing the Cruiser, size 3", "[,]");
-
-						coordinateStart = JSON.parse(coordinateStart);
-						coordinateEnd = JSON.parse(coordinateEnd);
-
-						if (coordinateStart[0] >= 0 && coordinateStart[0] <= 9 && coordinateStart[1] >= 0 && coordinateStart[1] <= 9) {
-							if (coordinateEnd[0] >= 0 && coordinateEnd[0] <= 9 && coordinateEnd[1] >= 0 && coordinateEnd[1] <= 9) {
-								if (coordinateStart[1] === coordinateEnd[1]) {
-									// Vertical
-									if (checkIfBoardIsFree(player, sizeShip, coordinateStart, coordinateEnd, "vertical")) {
-										player.board.placeShip(newShip, coordinateStart, coordinateEnd);
-										placedTheShip = true;
-									} else {
-										alert("Wrong coordinate please retry");
-									}
-								} else {
-									// Horizontal
-									if (checkIfBoardIsFree(player, sizeShip, coordinateStart, coordinateEnd, "horizontal")) {
-										player.board.placeShip(newShip, coordinateStart, coordinateEnd);
-										placedTheShip = true;
-									} else {
-										alert("Wrong coordinates please retry");
-									}
-								}
-							}
-						}
-					}
-
-					placedTheShip = false;
-
-					sizeShip = 3;
-
-					while (placedTheShip === false) {
-						let newShip = new Ship(sizeShip, 0, false);
-
-						let coordinateStart = prompt("Write your start coordinate, you are currently placing the Submarine, size 3", "[,]");
-
-						let coordinateEnd = prompt("Write your end coordinate, you are currently placing the Submarine, size 3", "[,]");
-
-						coordinateStart = JSON.parse(coordinateStart);
-						coordinateEnd = JSON.parse(coordinateEnd);
-
-						if (coordinateStart[0] >= 0 && coordinateStart[0] <= 9 && coordinateStart[1] >= 0 && coordinateStart[1] <= 9) {
-							if (coordinateEnd[0] >= 0 && coordinateEnd[0] <= 9 && coordinateEnd[1] >= 0 && coordinateEnd[1] <= 9) {
-								if (coordinateStart[1] === coordinateEnd[1]) {
-									// Vertical
-									if (checkIfBoardIsFree(player, sizeShip, coordinateStart, coordinateEnd, "vertical")) {
-										player.board.placeShip(newShip, coordinateStart, coordinateEnd);
-										placedTheShip = true;
-									} else {
-										alert("Wrong coordinate please retry");
-									}
-								} else {
-									// Horizontal
-									if (checkIfBoardIsFree(player, sizeShip, coordinateStart, coordinateEnd, "horizontal")) {
-										player.board.placeShip(newShip, coordinateStart, coordinateEnd);
-										placedTheShip = true;
-									} else {
-										alert("Wrong coordinates please retry");
-									}
-								}
-							}
-						}
-					}
-
-					placedTheShip = false;
-
-					sizeShip = 2;
-
-					while (placedTheShip === false) {
-						let newShip = new Ship(sizeShip, 0, false);
-
-						let coordinateStart = prompt("Write your start coordinate, you are currently placing the Destroyer, size 2", "[,]");
-
-						let coordinateEnd = prompt("Write your end coordinate, you are currently placing the Destroyer, size 2", "[,]");
-
-						coordinateStart = JSON.parse(coordinateStart);
-						coordinateEnd = JSON.parse(coordinateEnd);
-
-						if (coordinateStart[0] >= 0 && coordinateStart[0] <= 9 && coordinateStart[1] >= 0 && coordinateStart[1] <= 9) {
-							if (coordinateEnd[0] >= 0 && coordinateEnd[0] <= 9 && coordinateEnd[1] >= 0 && coordinateEnd[1] <= 9) {
-								if (coordinateStart[1] === coordinateEnd[1]) {
-									// Vertical
-									if (checkIfBoardIsFree(player, sizeShip, coordinateStart, coordinateEnd, "vertical")) {
-										player.board.placeShip(newShip, coordinateStart, coordinateEnd);
-										placedTheShip = true;
-									} else {
-										alert("Wrong coordinate please retry");
-									}
-								} else {
-									// Horizontal
-									if (checkIfBoardIsFree(player, sizeShip, coordinateStart, coordinateEnd, "horizontal")) {
-										player.board.placeShip(newShip, coordinateStart, coordinateEnd);
-										placedTheShip = true;
-									} else {
-										alert("Wrong coordinates please retry");
-									}
-								}
-							}
-						}
-					}
-
-					console.table(player.board.board);
-				}
-			});
+			placeShipPlayerTwo.addEventListener("click", () => {});
 
 			placeShipPlayerTwo1.addEventListener("click", () => {});
 		}
