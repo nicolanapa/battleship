@@ -36,4 +36,20 @@ function turnDisabler(player, playerWinStatus) {
 	}
 }
 
-export { turn, turnDisabler };
+function justDisabler() {
+	let playerOneBoard = document.querySelector(".main-gameboard .player-one .gameboard");
+	let playerTwoBoard = document.querySelector(".main-gameboard .player-two .gameboard");
+
+	playerOneBoard.classList.add("disabled");
+	playerTwoBoard.classList.add("disabled");
+}
+
+function justEnabler() {
+	let playerOneBoard = document.querySelector(".main-gameboard .player-one .gameboard");
+	let playerTwoBoard = document.querySelector(".main-gameboard .player-two .gameboard");
+
+	playerOneBoard.classList.remove("disabled");
+	playerTwoBoard.classList.remove("disabled");
+}
+
+export { turn, turnDisabler, justDisabler, justEnabler };
