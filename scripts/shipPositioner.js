@@ -1,4 +1,5 @@
 import { checkIfBoardIsFree, checkIfBoardIsRandomlyFree } from "./boardChecker.js";
+import { Ship } from "./ship.js";
 
 function placeAllShips(player) {
 	if (player.playerNumber === "player-two") {
