@@ -1,5 +1,10 @@
 import { checkIfBoardIsFree, checkIfBoardIsRandomlyFree } from "./boardChecker.js";
 import { Ship } from "./ship.js";
+import { justEnabler } from "./turnDom.js";
+
+let shipsPlayerOne = false;
+let shipsPlayerTwo = false;
+let robot = false;
 
 function playerPlacing(player) {
 	let sizeShip = 0;
@@ -434,6 +439,13 @@ function placeAllShips(player) {
 	if (player.playerNumber === "player-two") {
 		if (player.playerNumber === "player-two" && player.robot === true) {
 			randomPlacing(player);
+
+			shipsPlayerTwo = true;
+
+			if (shipsPlayerOne && shipsPlayerTwo) {
+				robot = true;
+				justEnabler(robot);
+			}
 		} else if (player.playerNumber === "player-two" && player.robot === false) {
 			let rightSettings = document.querySelector(".settings .right");
 			let smallRightSettings = document.querySelector(".small-right");
@@ -449,10 +461,21 @@ function placeAllShips(player) {
 
 			placeShipPlayerTwo.addEventListener("click", () => {
 				playerPlacing(player);
+				shipsPlayerTwo = true;
+
+				if (shipsPlayerOne && shipsPlayerTwo) {
+					robot = false;
+					justEnabler(robot);
+				}
 			});
 
 			placeShipPlayerTwo1.addEventListener("click", () => {
 				playerPlacing(player);
+				shipsPlayerTwo = true;
+
+				if (shipsPlayerOne && shipsPlayerTwo) {
+					justEnabler(robot);
+				}
 			});
 		}
 	} else {
@@ -464,6 +487,11 @@ function placeAllShips(player) {
 
 		placeShipPlayerOne.addEventListener("click", () => {
 			playerPlacing(player);
+			shipsPlayerOne = true;
+
+			if (shipsPlayerOne && shipsPlayerTwo) {
+				justEnabler(robot);
+			}
 		});
 	}
 }
