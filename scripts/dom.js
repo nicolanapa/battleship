@@ -6,35 +6,51 @@ import { boardPlacer } from "./boardDom.js";
 let playerOne = new Player("User" + Math.floor(Math.random() * 10000), "player-one", false);
 let playerTwo = new Player("User" + Math.floor(Math.random() * 10000), "player-two", true);
 
+if (localStorage.getItem("isPlayerTwoRobot")) {
+	playerTwo.robot = true;
+} else {
+	playerTwo.robot = false;
+}
+
 boardPlacer(playerOne);
 boardPlacer(playerTwo);
 
 let playersMode = document.querySelector(".two-players-mode");
 let smallPlayersMode = document.querySelector(".small-two-players-mode");
 
+if (playerTwo.robot) {
+	playersMode.textContent = "2-Players Mode -> NO";
+	smallPlayersMode.textContent = "2-Players Mode -> NO";
+} else {
+	playersMode.textContent = "2-Players Mode -> YES";
+	smallPlayersMode.textContent = "2-Players Mode -> YES";
+}
+
 playersMode.addEventListener("click", () => {
 	if (playerTwo.robot === false) {
-		playerTwo.robot = true;
+		localStorage.setItem("isPlayerTwoRobot", true);
 
-		playersMode.textContent = "2-Players Mode -> YES";
+		location.reload();
 	} else {
-		playerTwo.robot = false;
+		localStorage.setItem("isPlayerTwoRobot", false);
 
-		playersMode.textContent = "2-Players Mode -> NO";
+		location.reload();
 	}
-
-	//boardPlacer(playerTwo);
 });
 
 smallPlayersMode.addEventListener("click", () => {
 	if (playerTwo.robot === false) {
-		playerTwo.robot = true;
+		localStorage.setItem("isPlayerTwoRobot", true);
 
-		smallPlayersMode.textContent = "2-Players Mode -> YES";
+		localStorage.setItem("playersMode", "2-Players Mode -> YES");
+
+		location.reload();
 	} else {
-		playerTwo.robot = false;
+		localStorage.setItem("isPlayerTwoRobot", false);
 
-		smallPlayersMode.textContent = "2-Players Mode -> NO";
+		localStorage.setItem("playersMode", "2-Players Mode -> YES");
+
+		location.reload();
 	}
 
 	//boardPlacer(playerTwo);
