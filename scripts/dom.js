@@ -4,13 +4,11 @@ import { Player } from "./player.js";
 import { boardPlacer } from "./boardDom.js";
 
 let playerOne = new Player("User" + Math.floor(Math.random() * 10000), "player-one", false);
-let playerTwo = new Player("User" + Math.floor(Math.random() * 10000), "player-two", true);
-
-if (localStorage.getItem("isPlayerTwoRobot")) {
-	playerTwo.robot = true;
-} else {
-	playerTwo.robot = false;
-}
+let playerTwo = new Player(
+	"User" + Math.floor(Math.random() * 10000),
+	"player-two",
+	JSON.parse(localStorage.getItem("isPlayerTwoRobot")) === true ? true : false
+);
 
 boardPlacer(playerOne);
 boardPlacer(playerTwo);
@@ -42,13 +40,9 @@ smallPlayersMode.addEventListener("click", () => {
 	if (playerTwo.robot === false) {
 		localStorage.setItem("isPlayerTwoRobot", true);
 
-		localStorage.setItem("playersMode", "2-Players Mode -> YES");
-
 		location.reload();
 	} else {
 		localStorage.setItem("isPlayerTwoRobot", false);
-
-		localStorage.setItem("playersMode", "2-Players Mode -> YES");
 
 		location.reload();
 	}
